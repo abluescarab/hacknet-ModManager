@@ -100,7 +100,9 @@ namespace HacknetModManager {
                 }
             }
 
-            clbMods.Items.AddRange(Mods.Values.Select(m => m.Name).ToArray());
+            foreach(string name in Mods.Keys) {
+                listMods.Items.Add(name);
+            }
         }
 
         private void btnEnableAll_Click(object sender, EventArgs e) {
@@ -116,18 +118,18 @@ namespace HacknetModManager {
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {
-            string[] selected = clbMods.SelectedItems.Cast<string>().ToArray();
-
-            foreach(string item in selected) {
-                Mods[item].Remove();
-                Mods.Remove(item);
-                clbMods.Items.Remove(item);
+            var selected = listMods.SelectedItems;
+            
+            foreach(ListViewItem item in selected) {
+                Mods[item.Text].Remove();
+                Mods.Remove(item.Text);
+                listMods.Items.Remove(item);
             }
         }
         
         private void SetCheckedAll(bool check) {
-            for(int i = 0; i < clbMods.Items.Count; i++) {
-                clbMods.SetItemChecked(i, check);
+            for(int i = 0; i < listMods.Items.Count; i++) {
+                listMods.Items[i].Checked = check;
             }
         }
     }

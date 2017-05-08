@@ -23,7 +23,6 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.clbMods = new System.Windows.Forms.CheckedListBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tlpBottom = new System.Windows.Forms.TableLayoutPanel();
             this.btnRemove = new System.Windows.Forms.Button();
@@ -33,6 +32,10 @@
             this.btnDisableAll = new System.Windows.Forms.Button();
             this.btnEnableAll = new System.Windows.Forms.Button();
             this.btnOpenModFolder = new System.Windows.Forms.Button();
+            this.tlpSide = new System.Windows.Forms.TableLayoutPanel();
+            this.btnCreateMod = new System.Windows.Forms.Button();
+            this.btnEditMod = new System.Windows.Forms.Button();
+            this.btnHomepage = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblAuthors = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -40,31 +43,16 @@
             this.tlpPlay = new System.Windows.Forms.TableLayoutPanel();
             this.btnPlayUnmodded = new System.Windows.Forms.Button();
             this.btnPlayPathfinder = new System.Windows.Forms.Button();
-            this.btnCreateMod = new System.Windows.Forms.Button();
-            this.tlpSide = new System.Windows.Forms.TableLayoutPanel();
-            this.btnEditMod = new System.Windows.Forms.Button();
-            this.btnHomepage = new System.Windows.Forms.Button();
+            this.listMods = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tlpBottom.SuspendLayout();
             this.tlpTop.SuspendLayout();
-            this.tlpPlay.SuspendLayout();
             this.tlpSide.SuspendLayout();
+            this.tlpPlay.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // clbMods
-            // 
-            this.clbMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.clbMods.FormattingEnabled = true;
-            this.clbMods.IntegralHeight = false;
-            this.clbMods.Location = new System.Drawing.Point(12, 49);
-            this.clbMods.Name = "clbMods";
-            this.clbMods.Size = new System.Drawing.Size(185, 293);
-            this.clbMods.TabIndex = 2;
             // 
             // splitContainer1
             // 
@@ -74,9 +62,9 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.listMods);
             this.splitContainer1.Panel1.Controls.Add(this.tlpBottom);
             this.splitContainer1.Panel1.Controls.Add(this.tlpTop);
-            this.splitContainer1.Panel1.Controls.Add(this.clbMods);
             this.splitContainer1.Panel1MinSize = 200;
             // 
             // splitContainer1.Panel2
@@ -150,7 +138,7 @@
             this.tlpTop.ColumnCount = 3;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
             this.tlpTop.Controls.Add(this.btnDisableAll, 1, 0);
             this.tlpTop.Controls.Add(this.btnEnableAll, 0, 0);
             this.tlpTop.Controls.Add(this.btnOpenModFolder, 2, 0);
@@ -166,7 +154,7 @@
             this.btnDisableAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDisableAll.Location = new System.Drawing.Point(79, 3);
             this.btnDisableAll.Name = "btnDisableAll";
-            this.btnDisableAll.Size = new System.Drawing.Size(71, 25);
+            this.btnDisableAll.Size = new System.Drawing.Size(70, 25);
             this.btnDisableAll.TabIndex = 4;
             this.btnDisableAll.Text = "Disable All";
             this.btnDisableAll.UseVisualStyleBackColor = true;
@@ -187,12 +175,59 @@
             // 
             this.btnOpenModFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpenModFolder.Image = global::HacknetModManager.Properties.Resources.folder_go;
-            this.btnOpenModFolder.Location = new System.Drawing.Point(156, 3);
+            this.btnOpenModFolder.Location = new System.Drawing.Point(155, 3);
             this.btnOpenModFolder.Name = "btnOpenModFolder";
-            this.btnOpenModFolder.Size = new System.Drawing.Size(26, 25);
+            this.btnOpenModFolder.Size = new System.Drawing.Size(27, 25);
             this.btnOpenModFolder.TabIndex = 5;
             this.btnOpenModFolder.UseVisualStyleBackColor = true;
             this.btnOpenModFolder.Click += new System.EventHandler(this.btnOpenModFolder_Click);
+            // 
+            // tlpSide
+            // 
+            this.tlpSide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpSide.ColumnCount = 1;
+            this.tlpSide.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tlpSide.Controls.Add(this.btnCreateMod, 0, 1);
+            this.tlpSide.Controls.Add(this.btnEditMod, 0, 2);
+            this.tlpSide.Controls.Add(this.btnHomepage, 0, 0);
+            this.tlpSide.Location = new System.Drawing.Point(209, 81);
+            this.tlpSide.Name = "tlpSide";
+            this.tlpSide.RowCount = 3;
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.tlpSide.Size = new System.Drawing.Size(115, 94);
+            this.tlpSide.TabIndex = 7;
+            // 
+            // btnCreateMod
+            // 
+            this.btnCreateMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCreateMod.Location = new System.Drawing.Point(3, 34);
+            this.btnCreateMod.Name = "btnCreateMod";
+            this.btnCreateMod.Size = new System.Drawing.Size(109, 25);
+            this.btnCreateMod.TabIndex = 2;
+            this.btnCreateMod.Text = "Create";
+            this.btnCreateMod.UseVisualStyleBackColor = true;
+            // 
+            // btnEditMod
+            // 
+            this.btnEditMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEditMod.Location = new System.Drawing.Point(3, 65);
+            this.btnEditMod.Name = "btnEditMod";
+            this.btnEditMod.Size = new System.Drawing.Size(109, 26);
+            this.btnEditMod.TabIndex = 3;
+            this.btnEditMod.Text = "Edit";
+            this.btnEditMod.UseVisualStyleBackColor = true;
+            // 
+            // btnHomepage
+            // 
+            this.btnHomepage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnHomepage.Location = new System.Drawing.Point(3, 3);
+            this.btnHomepage.Name = "btnHomepage";
+            this.btnHomepage.Size = new System.Drawing.Size(109, 25);
+            this.btnHomepage.TabIndex = 4;
+            this.btnHomepage.Text = "Visit Homepage";
+            this.btnHomepage.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
@@ -212,7 +247,7 @@
             this.lblAuthors.Location = new System.Drawing.Point(3, 52);
             this.lblAuthors.MaximumSize = new System.Drawing.Size(0, 28);
             this.lblAuthors.Name = "lblAuthors";
-            this.lblAuthors.Size = new System.Drawing.Size(321, 26);
+            this.lblAuthors.Size = new System.Drawing.Size(0, 26);
             this.lblAuthors.TabIndex = 5;
             this.lblAuthors.Text = "N/A";
             // 
@@ -224,7 +259,7 @@
             this.lblDescription.Location = new System.Drawing.Point(3, 26);
             this.lblDescription.MaximumSize = new System.Drawing.Size(0, 28);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(321, 26);
+            this.lblDescription.Size = new System.Drawing.Size(0, 26);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "N/A";
             // 
@@ -279,52 +314,17 @@
             this.btnPlayPathfinder.UseVisualStyleBackColor = true;
             this.btnPlayPathfinder.Click += new System.EventHandler(this.btnPlayPathfinder_Click);
             // 
-            // btnCreateMod
+            // listMods
             // 
-            this.btnCreateMod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCreateMod.Location = new System.Drawing.Point(3, 34);
-            this.btnCreateMod.Name = "btnCreateMod";
-            this.btnCreateMod.Size = new System.Drawing.Size(109, 25);
-            this.btnCreateMod.TabIndex = 2;
-            this.btnCreateMod.Text = "Create";
-            this.btnCreateMod.UseVisualStyleBackColor = true;
-            // 
-            // tlpSide
-            // 
-            this.tlpSide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.tlpSide.ColumnCount = 1;
-            this.tlpSide.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSide.Controls.Add(this.btnCreateMod, 0, 1);
-            this.tlpSide.Controls.Add(this.btnEditMod, 0, 2);
-            this.tlpSide.Controls.Add(this.btnHomepage, 0, 0);
-            this.tlpSide.Location = new System.Drawing.Point(209, 81);
-            this.tlpSide.Name = "tlpSide";
-            this.tlpSide.RowCount = 3;
-            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSide.Size = new System.Drawing.Size(115, 94);
-            this.tlpSide.TabIndex = 7;
-            // 
-            // btnEditMod
-            // 
-            this.btnEditMod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEditMod.Location = new System.Drawing.Point(3, 65);
-            this.btnEditMod.Name = "btnEditMod";
-            this.btnEditMod.Size = new System.Drawing.Size(109, 26);
-            this.btnEditMod.TabIndex = 3;
-            this.btnEditMod.Text = "Edit";
-            this.btnEditMod.UseVisualStyleBackColor = true;
-            // 
-            // btnHomepage
-            // 
-            this.btnHomepage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnHomepage.Location = new System.Drawing.Point(3, 3);
-            this.btnHomepage.Name = "btnHomepage";
-            this.btnHomepage.Size = new System.Drawing.Size(109, 25);
-            this.btnHomepage.TabIndex = 4;
-            this.btnHomepage.Text = "Visit Homepage";
-            this.btnHomepage.UseVisualStyleBackColor = true;
+            this.listMods.CheckBoxes = true;
+            this.listMods.Location = new System.Drawing.Point(12, 50);
+            this.listMods.Name = "listMods";
+            this.listMods.ShowGroups = false;
+            this.listMods.Size = new System.Drawing.Size(185, 292);
+            this.listMods.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listMods.TabIndex = 7;
+            this.listMods.UseCompatibleStateImageBehavior = false;
+            this.listMods.View = System.Windows.Forms.View.List;
             // 
             // Main
             // 
@@ -346,15 +346,13 @@
             this.splitContainer1.ResumeLayout(false);
             this.tlpBottom.ResumeLayout(false);
             this.tlpTop.ResumeLayout(false);
-            this.tlpPlay.ResumeLayout(false);
             this.tlpSide.ResumeLayout(false);
+            this.tlpPlay.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckedListBox clbMods;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Button btnDisableAll;
         private System.Windows.Forms.Button btnEnableAll;
@@ -375,6 +373,7 @@
         private System.Windows.Forms.TableLayoutPanel tlpSide;
         private System.Windows.Forms.Button btnEditMod;
         private System.Windows.Forms.Button btnHomepage;
+        private System.Windows.Forms.ListView listMods;
     }
 }
 
