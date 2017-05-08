@@ -103,7 +103,7 @@ namespace HacknetModManager {
             return jsonMod;
         }
 
-        private static async Task<Mod> Unzip(string extractFolder, string file) {
+        public static async Task<Mod> Unzip(string extractFolder, string file) {
             string jsonFile = "";
             Mod mod;
 
