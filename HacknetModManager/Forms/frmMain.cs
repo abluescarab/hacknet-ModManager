@@ -55,6 +55,44 @@ namespace HacknetModManager {
             Process.Start(ModsFolder);
         }
 
+        private void btnEnableAll_Click(object sender, EventArgs e) {
+            SetCheckedAll(true);
+        }
+
+        private void btnDisableAll_Click(object sender, EventArgs e) {
+            SetCheckedAll(false);
+        }
+
+        private void btnInstall_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e) {
+            var selected = listMods.SelectedItems;
+
+            foreach(ListViewItem item in selected) {
+                Mods[item.Text].Remove();
+                Mods.Remove(item.Text);
+                listMods.Items.Remove(item);
+            }
+        }
+
+        private void listMods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+            Mod mod = Mods[e.Item.Text];
+
+            if(!string.IsNullOrWhiteSpace(mod.Title)) {
+                lblTitleVersion.Text = mod.Title;
+
+                if(!string.IsNullOrWhiteSpace(mod.Version)) {
+                    lblTitleVersion.Text += " " + mod.Version;
+                }
+            }
+            else lblTitleVersion.Text = "N/A";
+
+            lblDescription.Text = (string.IsNullOrWhiteSpace(mod.Description) ? "N/A" : mod.Description);
+            lblAuthors.Text = (mod.Authors.Length == 0 ? "N/A" : string.Join(", ", mod.Authors));
+        }
+
         private void ResizeLabels() {
             lblDescription.ConstrainMaximumWidthToParent(lblDescription.Margin.Right * 4);
             lblAuthors.ConstrainMaximumWidthToParent(lblAuthors.Margin.Right * 4);
@@ -102,28 +140,6 @@ namespace HacknetModManager {
 
             foreach(string name in Mods.Keys) {
                 listMods.Items.Add(name);
-            }
-        }
-
-        private void btnEnableAll_Click(object sender, EventArgs e) {
-            SetCheckedAll(true);
-        }
-
-        private void btnDisableAll_Click(object sender, EventArgs e) {
-            SetCheckedAll(false);
-        }
-
-        private void btnInstall_Click(object sender, EventArgs e) {
-
-        }
-
-        private void btnRemove_Click(object sender, EventArgs e) {
-            var selected = listMods.SelectedItems;
-            
-            foreach(ListViewItem item in selected) {
-                Mods[item.Text].Remove();
-                Mods.Remove(item.Text);
-                listMods.Items.Remove(item);
             }
         }
         
