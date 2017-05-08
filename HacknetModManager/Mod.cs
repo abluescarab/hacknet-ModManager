@@ -75,7 +75,11 @@ namespace HacknetModManager {
 
         public void Remove() {
             if(!string.IsNullOrWhiteSpace(Name)) {
-                
+                string[] files = Directory.GetFiles(Main.ModsFolder, Name + "*");
+
+                foreach(string file in files) {
+                    File.Delete(file);
+                }
             }
         }
 
