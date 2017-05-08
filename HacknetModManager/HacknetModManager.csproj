@@ -58,26 +58,32 @@
   <ItemGroup>
     <Compile Include="Extensions.cs" />
     <Compile Include="FileUtils.cs" />
-    <Compile Include="Forms\Download.cs">
+    <Compile Include="Forms\frmDownload.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Download.Designer.cs">
-      <DependentUpon>Download.cs</DependentUpon>
+    <Compile Include="Forms\frmDownload.Designer.cs">
+      <DependentUpon>frmDownload.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Main.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Main.Designer.cs">
-      <DependentUpon>Main.cs</DependentUpon>
+    <Compile Include="Forms\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmInstall.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmInstall.Designer.cs">
+      <DependentUpon>frmInstall.cs</DependentUpon>
     </Compile>
     <Compile Include="Mod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\Download.resx">
-      <DependentUpon>Download.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmDownload.resx">
+      <DependentUpon>frmDownload.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Main.resx">
-      <DependentUpon>Main.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
