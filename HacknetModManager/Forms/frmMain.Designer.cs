@@ -151,7 +151,7 @@
             this.tlpTop.ColumnCount = 3;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tlpTop.Controls.Add(this.btnDisableAll, 1, 0);
             this.tlpTop.Controls.Add(this.btnEnableAll, 0, 0);
             this.tlpTop.Controls.Add(this.btnOpenModFolder, 2, 0);
@@ -167,7 +167,7 @@
             this.btnDisableAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnDisableAll.Location = new System.Drawing.Point(78, 3);
             this.btnDisableAll.Name = "btnDisableAll";
-            this.btnDisableAll.Size = new System.Drawing.Size(70, 25);
+            this.btnDisableAll.Size = new System.Drawing.Size(69, 25);
             this.btnDisableAll.TabIndex = 4;
             this.btnDisableAll.Text = "Disable All";
             this.btnDisableAll.UseVisualStyleBackColor = true;
@@ -188,9 +188,9 @@
             // 
             this.btnOpenModFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpenModFolder.Image = global::HacknetModManager.Properties.Resources.folder_go;
-            this.btnOpenModFolder.Location = new System.Drawing.Point(154, 3);
+            this.btnOpenModFolder.Location = new System.Drawing.Point(153, 3);
             this.btnOpenModFolder.Name = "btnOpenModFolder";
-            this.btnOpenModFolder.Size = new System.Drawing.Size(28, 25);
+            this.btnOpenModFolder.Size = new System.Drawing.Size(29, 25);
             this.btnOpenModFolder.TabIndex = 5;
             this.btnOpenModFolder.UseVisualStyleBackColor = true;
             this.btnOpenModFolder.Click += new System.EventHandler(this.btnOpenModFolder_Click);
@@ -330,14 +330,14 @@
             this.btnPlayPathfinder.UseVisualStyleBackColor = true;
             this.btnPlayPathfinder.Click += new System.EventHandler(this.btnPlayPathfinder_Click);
             // 
-            // Main
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(540, 391);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(435, 39);
-            this.Name = "Main";
+            this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hacknet Mod Manager";
             this.Activated += new System.EventHandler(this.frmMain_Activated);
