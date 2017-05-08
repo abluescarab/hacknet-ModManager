@@ -112,7 +112,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Install Mod";
+            this.Text = "Choose Release";
             this.TopMost = true;
             this.tlpButtons.ResumeLayout(false);
             this.ResumeLayout(false);
