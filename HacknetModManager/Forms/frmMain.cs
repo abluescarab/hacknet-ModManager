@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace HacknetModManager {
         public static string DownloadsFolder { get; private set; }
         public static string ExtractFolder { get; private set; }
         public static Dictionary<string, Mod> Mods { get; private set; }
+        public static Octokit.GitHubClient Client { get; private set; }
 
         public frmMain() {
             InitializeComponent();
@@ -24,6 +26,7 @@ namespace HacknetModManager {
             }
 
             Mods = new Dictionary<string, Mod>();
+            Client = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(Assembly.GetExecutingAssembly().GetName().Name));
 
             InitializeFolders();
             LoadMods();
@@ -64,7 +67,7 @@ namespace HacknetModManager {
         }
 
         private void btnInstall_Click(object sender, EventArgs e) {
-
+            
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {
@@ -142,7 +145,7 @@ namespace HacknetModManager {
                 listMods.Items.Add(name);
             }
         }
-        
+
         private void SetCheckedAll(bool check) {
             for(int i = 0; i < listMods.Items.Count; i++) {
                 listMods.Items[i].Checked = check;

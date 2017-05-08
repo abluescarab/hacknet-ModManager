@@ -29,8 +29,6 @@ namespace HacknetModManager {
         public string[] Authors { get; set; }
         public string Info { get; set; }
 
-        private GitHubClient client;
-
         Mod() : this("", "") { }
 
         public Mod(string name) : this(name, "") { }
@@ -41,16 +39,18 @@ namespace HacknetModManager {
             Authors = new string[] { };
         }
 
-        public void Update(string downloadFolder, string extractFolder) {
+        public bool Update(GitHubClient client, string downloadFolder, string extractFolder) {
             Match match;
 
-            if(IsValid(Repository, out match)) {
+            if(IsValid(client, Repository, out match)) {
                 string user = match.Groups[1].ToString();
                 string repo = match.Groups[2].ToString();
-                client = new GitHubClient(new ProductHeaderValue(Assembly.GetExecutingAssembly().GetName().Name));
 
                 var download = BeginDownload(client, user, repo, downloadFolder, extractFolder);
+                return true;
             }
+
+            return false;
         }
 
         private async Task BeginDownload(GitHubClient client, string user, string repo, string downloadFolder, string extractFolder) {
@@ -71,7 +71,7 @@ namespace HacknetModManager {
                         Mod mod = Unzip(extractFolder, file).Result;
 
                         this.Copy(mod);
-
+                        
                         if(!frmMain.Mods.ContainsKey(mod.Name)) {
                             frmMain.Mods.Add(mod.Name, mod);
                         }
@@ -92,10 +92,26 @@ namespace HacknetModManager {
             }
         }
 
-        public static bool IsValid(string repository, out Match match) {
+        public static bool IsValid(GitHubClient client, string repository, out Match match) {
             match = Regex.Match(repository, ".*github.com/(.*)/(.*)");
-            return !string.IsNullOrWhiteSpace(repository) && match.Success;
+
+            if(client != null && !string.IsNullOrWhiteSpace(repository) && match.Success) {
+                try {
+                    SearchRepositoriesRequest request = new SearchRepositoriesRequest(match.Groups[2].ToString()) {
+                        User = match.Groups[1].ToString()
+                    };
+
+                    return client.Search.SearchRepo(request).Result.TotalCount > 0;
+                }
+                catch(FormatException) {
+                    return false;
+                }
+            }
+
+            return false;
         }
+
+
 
         public static Mod Parse(string name, string file) {
             Mod jsonMod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(file));
