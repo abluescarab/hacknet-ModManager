@@ -110,9 +110,7 @@ namespace HacknetModManager {
 
             return false;
         }
-
-
-
+        
         public static Mod Parse(string name, string file) {
             Mod jsonMod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(file));
             jsonMod.Name = name;
