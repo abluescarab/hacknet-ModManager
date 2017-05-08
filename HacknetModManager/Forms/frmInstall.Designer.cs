@@ -1,5 +1,5 @@
-﻿namespace HacknetModManager {
-    partial class Install {
+﻿namespace HacknetModManager.Forms {
+    partial class frmInstall {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -25,7 +25,7 @@
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Text = "Install";
+            this.Text = "frmInstall";
         }
 
         #endregion

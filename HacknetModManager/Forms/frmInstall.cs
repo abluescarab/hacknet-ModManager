@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace HacknetModManager {
-    public partial class Install : Form {
-        public Install() {
+namespace HacknetModManager.Forms {
+    public partial class frmInstall : Form {
+        public frmInstall() {
             InitializeComponent();
         }
     }
