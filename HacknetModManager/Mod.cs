@@ -67,7 +67,13 @@ namespace HacknetModManager {
                     string file = Path.Combine(downloadFolder, files[i]);
 
                     web.DownloadFileCompleted += (s, e) => {
-                        this.Copy(Unzip(extractFolder, file).Result);
+                        Mod mod = Unzip(extractFolder, file).Result;
+
+                        this.Copy(mod);
+
+                        if(!frmMain.Mods.ContainsKey(mod.Name)) {
+                            frmMain.Mods.Add(mod.Name, mod);
+                        }
                     };
 
                     web.DownloadFileAsync(new Uri(urls[i]), file);
@@ -118,7 +124,7 @@ namespace HacknetModManager {
             else {
                 mod = new Mod(Path.GetFileNameWithoutExtension(file));
             }
-            
+
             return mod;
         }
     }
