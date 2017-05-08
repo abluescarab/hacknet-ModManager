@@ -36,6 +36,7 @@ namespace HacknetModManager {
         public Mod(string name, string repository) {
             Name = name;
             Repository = repository;
+            Authors = new string[] { };
         }
 
         public void Update(string downloadFolder, string extractFolder) {
