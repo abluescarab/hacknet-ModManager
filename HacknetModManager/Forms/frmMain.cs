@@ -7,13 +7,13 @@ using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace HacknetModManager {
-    public partial class Main : Form {
+    public partial class frmMain : Form {
         public static string ModsFolder { get; private set; }
         public static string DownloadsFolder { get; private set; }
         public static string ExtractFolder { get; private set; }
         public static Dictionary<string, Mod> Mods { get; private set; }
 
-        public Main() {
+        public frmMain() {
             InitializeComponent();
         }
 

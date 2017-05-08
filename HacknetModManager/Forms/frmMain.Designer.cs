@@ -1,5 +1,5 @@
 ﻿namespace HacknetModManager {
-    partial class Main {
+    partial class frmMain {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.listMods = new System.Windows.Forms.ListView();
             this.tlpBottom = new System.Windows.Forms.TableLayoutPanel();
             this.btnRemove = new System.Windows.Forms.Button();
             this.btnInstall = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.tlpPlay = new System.Windows.Forms.TableLayoutPanel();
             this.btnPlayUnmodded = new System.Windows.Forms.Button();
             this.btnPlayPathfinder = new System.Windows.Forms.Button();
-            this.listMods = new System.Windows.Forms.ListView();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -79,6 +79,19 @@
             this.splitContainer1.Size = new System.Drawing.Size(540, 391);
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 3;
+            // 
+            // listMods
+            // 
+            this.listMods.CheckBoxes = true;
+            this.listMods.Location = new System.Drawing.Point(12, 50);
+            this.listMods.Name = "listMods";
+            this.listMods.ShowGroups = false;
+            this.listMods.Size = new System.Drawing.Size(185, 292);
+            this.listMods.Sorting = System.Windows.Forms.SortOrder.Ascending;
+            this.listMods.TabIndex = 7;
+            this.listMods.UseCompatibleStateImageBehavior = false;
+            this.listMods.View = System.Windows.Forms.View.List;
+            this.listMods.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listMods_ItemSelectionChanged);
             // 
             // tlpBottom
             // 
@@ -138,7 +151,7 @@
             this.tlpTop.ColumnCount = 3;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tlpTop.Controls.Add(this.btnDisableAll, 1, 0);
             this.tlpTop.Controls.Add(this.btnEnableAll, 0, 0);
             this.tlpTop.Controls.Add(this.btnOpenModFolder, 2, 0);
@@ -152,7 +165,7 @@
             // btnDisableAll
             // 
             this.btnDisableAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisableAll.Location = new System.Drawing.Point(79, 3);
+            this.btnDisableAll.Location = new System.Drawing.Point(78, 3);
             this.btnDisableAll.Name = "btnDisableAll";
             this.btnDisableAll.Size = new System.Drawing.Size(70, 25);
             this.btnDisableAll.TabIndex = 4;
@@ -165,7 +178,7 @@
             this.btnEnableAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEnableAll.Location = new System.Drawing.Point(3, 3);
             this.btnEnableAll.Name = "btnEnableAll";
-            this.btnEnableAll.Size = new System.Drawing.Size(70, 25);
+            this.btnEnableAll.Size = new System.Drawing.Size(69, 25);
             this.btnEnableAll.TabIndex = 3;
             this.btnEnableAll.Text = "Enable All";
             this.btnEnableAll.UseVisualStyleBackColor = true;
@@ -175,9 +188,9 @@
             // 
             this.btnOpenModFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpenModFolder.Image = global::HacknetModManager.Properties.Resources.folder_go;
-            this.btnOpenModFolder.Location = new System.Drawing.Point(155, 3);
+            this.btnOpenModFolder.Location = new System.Drawing.Point(154, 3);
             this.btnOpenModFolder.Name = "btnOpenModFolder";
-            this.btnOpenModFolder.Size = new System.Drawing.Size(27, 25);
+            this.btnOpenModFolder.Size = new System.Drawing.Size(28, 25);
             this.btnOpenModFolder.TabIndex = 5;
             this.btnOpenModFolder.UseVisualStyleBackColor = true;
             this.btnOpenModFolder.Click += new System.EventHandler(this.btnOpenModFolder_Click);
@@ -240,14 +253,16 @@
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(200, 261);
             this.textBox1.TabIndex = 6;
+            this.textBox1.Text = "No information.";
             // 
             // lblAuthors
             // 
             this.lblAuthors.AutoEllipsis = true;
+            this.lblAuthors.AutoSize = true;
             this.lblAuthors.Location = new System.Drawing.Point(3, 52);
             this.lblAuthors.MaximumSize = new System.Drawing.Size(0, 28);
             this.lblAuthors.Name = "lblAuthors";
-            this.lblAuthors.Size = new System.Drawing.Size(0, 26);
+            this.lblAuthors.Size = new System.Drawing.Size(27, 13);
             this.lblAuthors.TabIndex = 5;
             this.lblAuthors.Text = "N/A";
             // 
@@ -256,10 +271,11 @@
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDescription.AutoEllipsis = true;
+            this.lblDescription.AutoSize = true;
             this.lblDescription.Location = new System.Drawing.Point(3, 26);
             this.lblDescription.MaximumSize = new System.Drawing.Size(0, 28);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(0, 26);
+            this.lblDescription.Size = new System.Drawing.Size(27, 13);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "N/A";
             // 
@@ -313,18 +329,6 @@
             this.btnPlayPathfinder.Text = "Play (Pathfinder)";
             this.btnPlayPathfinder.UseVisualStyleBackColor = true;
             this.btnPlayPathfinder.Click += new System.EventHandler(this.btnPlayPathfinder_Click);
-            // 
-            // listMods
-            // 
-            this.listMods.CheckBoxes = true;
-            this.listMods.Location = new System.Drawing.Point(12, 50);
-            this.listMods.Name = "listMods";
-            this.listMods.ShowGroups = false;
-            this.listMods.Size = new System.Drawing.Size(185, 292);
-            this.listMods.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listMods.TabIndex = 7;
-            this.listMods.UseCompatibleStateImageBehavior = false;
-            this.listMods.View = System.Windows.Forms.View.List;
             // 
             // Main
             // 
