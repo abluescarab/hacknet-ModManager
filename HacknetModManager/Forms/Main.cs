@@ -99,14 +99,16 @@ namespace HacknetModManager {
                     Mods.Add(name, new Mod(name));
                 }
             }
+
+            clbMods.Items.AddRange(Mods.Values.Select(m => m.Name).ToArray());
         }
 
         private void btnEnableAll_Click(object sender, EventArgs e) {
-
+            SetCheckedAll(true);
         }
 
         private void btnDisableAll_Click(object sender, EventArgs e) {
-
+            SetCheckedAll(false);
         }
 
         private void btnInstall_Click(object sender, EventArgs e) {
@@ -114,7 +116,19 @@ namespace HacknetModManager {
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {
+            string[] selected = clbMods.SelectedItems.Cast<string>().ToArray();
 
+            foreach(string item in selected) {
+                Mods[item].Remove();
+                Mods.Remove(item);
+                clbMods.Items.Remove(item);
+            }
+        }
+        
+        private void SetCheckedAll(bool check) {
+            for(int i = 0; i < clbMods.Items.Count; i++) {
+                clbMods.SetItemChecked(i, check);
+            }
         }
     }
 }
