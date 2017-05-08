@@ -3,6 +3,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -46,7 +47,7 @@ namespace HacknetModManager {
             if(IsValid(Repository, out match)) {
                 string user = match.Groups[1].ToString();
                 string repo = match.Groups[2].ToString();
-                client = new GitHubClient(new ProductHeaderValue(repo));
+                client = new GitHubClient(new ProductHeaderValue(Assembly.GetExecutingAssembly().GetName().Name));
 
                 var download = BeginDownload(client, user, repo, downloadFolder, extractFolder);
             }
