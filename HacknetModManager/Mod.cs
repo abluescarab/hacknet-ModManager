@@ -26,6 +26,7 @@ namespace HacknetModManager {
         /// </summary>
         public string Repository { get; set; }
         public string[] Authors { get; set; }
+        public string Info { get; set; }
 
         private GitHubClient client;
 
@@ -95,30 +96,30 @@ namespace HacknetModManager {
 
             return jsonMod;
         }
-        
+
         private static async Task<Mod> Unzip(string extractFolder, string file) {
-            string jsonName = "";
             string jsonFile = "";
+            Mod mod;
 
             using(ZipArchive archive = ZipFile.OpenRead(file)) {
                 foreach(ZipArchiveEntry entry in archive.Entries) {
                     if(entry.FullName.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) {
-                        jsonName = entry.Name;
+                        jsonFile = Path.Combine(extractFolder, entry.Name);
                     }
 
                     await Task.Run(() => entry.ExtractToFile(Path.Combine(extractFolder, entry.FullName)));
                 }
             }
 
-            if(!string.IsNullOrWhiteSpace(jsonName)) {
-                jsonFile = Path.Combine(extractFolder, jsonName);
-                string mod = Path.GetFileNameWithoutExtension(jsonName);
-
-                return Parse(mod, jsonFile);
+            if(!string.IsNullOrWhiteSpace(jsonFile) && File.Exists(jsonFile)) {
+                string modName = Path.GetFileNameWithoutExtension(jsonFile);
+                mod = Parse(modName, jsonFile);
             }
             else {
-                return new Mod(Path.GetFileNameWithoutExtension(file));
+                mod = new Mod(Path.GetFileNameWithoutExtension(file));
             }
+            
+            return mod;
         }
     }
 }
