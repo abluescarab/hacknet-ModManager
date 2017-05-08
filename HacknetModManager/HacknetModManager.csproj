@@ -58,6 +58,12 @@
   <ItemGroup>
     <Compile Include="Extensions.cs" />
     <Compile Include="FileUtils.cs" />
+    <Compile Include="Forms\Download.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Download.Designer.cs">
+      <DependentUpon>Download.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +73,9 @@
     <Compile Include="Mod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\Download.resx">
+      <DependentUpon>Download.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
