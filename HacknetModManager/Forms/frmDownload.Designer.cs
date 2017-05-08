@@ -30,61 +30,91 @@
         {
             this.listReleases = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonDownload = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
+            this.btnDownload = new System.Windows.Forms.Button();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.tlpButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // listReleases
             // 
+            this.listReleases.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listReleases.FormattingEnabled = true;
-            this.listReleases.Location = new System.Drawing.Point(12, 42);
+            this.listReleases.IntegralHeight = false;
+            this.listReleases.Location = new System.Drawing.Point(12, 25);
             this.listReleases.Name = "listReleases";
-            this.listReleases.Size = new System.Drawing.Size(260, 199);
+            this.listReleases.Size = new System.Drawing.Size(221, 145);
             this.listReleases.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 13);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(223, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Select which release of this mod to download:";
             // 
-            // buttonDownload
+            // btnDownload
             // 
-            this.buttonDownload.Location = new System.Drawing.Point(116, 247);
-            this.buttonDownload.Name = "buttonDownload";
-            this.buttonDownload.Size = new System.Drawing.Size(75, 23);
-            this.buttonDownload.TabIndex = 2;
-            this.buttonDownload.Text = "OK";
-            this.buttonDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDownload.Location = new System.Drawing.Point(0, 0);
+            this.btnDownload.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(77, 25);
+            this.btnDownload.TabIndex = 2;
+            this.btnDownload.Text = "OK";
+            this.btnDownload.UseVisualStyleBackColor = true;
             // 
-            // buttonCancel
+            // btnCancel
             // 
-            this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(197, 247);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 4;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCancel.Location = new System.Drawing.Point(83, 0);
+            this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(77, 25);
+            this.btnCancel.TabIndex = 4;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            // 
+            // tlpButtons
+            // 
+            this.tlpButtons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpButtons.ColumnCount = 2;
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtons.Controls.Add(this.btnDownload, 0, 0);
+            this.tlpButtons.Controls.Add(this.btnCancel, 1, 0);
+            this.tlpButtons.Location = new System.Drawing.Point(73, 176);
+            this.tlpButtons.Name = "tlpButtons";
+            this.tlpButtons.RowCount = 1;
+            this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtons.Size = new System.Drawing.Size(160, 25);
+            this.tlpButtons.TabIndex = 5;
             // 
             // windowDownload
             // 
-            this.AcceptButton = this.buttonDownload;
+            this.AcceptButton = this.btnDownload;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(291, 279);
-            this.Controls.Add(this.buttonCancel);
-            this.Controls.Add(this.buttonDownload);
+            this.CancelButton = this.btnCancel;
+            this.ClientSize = new System.Drawing.Size(245, 213);
+            this.Controls.Add(this.tlpButtons);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listReleases);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "windowDownload";
-            this.Text = "Hacknet Mod Manager";
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "Install Mod";
+            this.TopMost = true;
+            this.tlpButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -94,7 +124,8 @@
 
         internal System.Windows.Forms.ListBox listReleases;
         private System.Windows.Forms.Label label1;
-        internal System.Windows.Forms.Button buttonDownload;
-        internal System.Windows.Forms.Button buttonCancel;
+        internal System.Windows.Forms.Button btnDownload;
+        internal System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.TableLayoutPanel tlpButtons;
     }
 }
