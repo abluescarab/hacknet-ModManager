@@ -29,7 +29,7 @@ namespace HacknetModManager {
         public string[] Authors { get; set; }
         public string Info { get; set; }
 
-        Mod() : this("", "") { }
+        public Mod() : this("", "") { }
 
         public Mod(string name) : this(name, "") { }
 
