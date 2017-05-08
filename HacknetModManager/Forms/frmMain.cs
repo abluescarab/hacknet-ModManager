@@ -67,7 +67,8 @@ namespace HacknetModManager {
         }
 
         private void btnInstall_Click(object sender, EventArgs e) {
-            
+            frmInstall form = new frmInstall();
+            form.ShowDialog();
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {
