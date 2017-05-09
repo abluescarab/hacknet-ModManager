@@ -306,6 +306,7 @@
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.Size = new System.Drawing.Size(178, 146);
             this.txtInfo.TabIndex = 10;
+            this.txtInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInfo_KeyDown);
             // 
             // frmEdit
             // 

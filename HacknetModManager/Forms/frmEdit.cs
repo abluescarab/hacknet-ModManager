@@ -25,7 +25,7 @@ namespace HacknetModManager {
             foreach(string author in mod.Authors) {
                 lbxAuthors.Items.Add(author);
             }
-            
+
             CheckAuthors();
 
             return ShowDialog();
@@ -89,6 +89,14 @@ namespace HacknetModManager {
             }
             else {
                 lbxAuthors.SelectedIndex = 0;
+            }
+        }
+
+        private void txtInfo_KeyDown(object sender, KeyEventArgs e) {
+            if(e.Control && e.KeyCode == Keys.A) {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                txtInfo.SelectAll();
             }
         }
     }
