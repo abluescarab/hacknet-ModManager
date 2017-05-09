@@ -3,7 +3,6 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -39,21 +38,60 @@ namespace HacknetModManager {
             Authors = new string[] { };
         }
 
-        public bool Update(GitHubClient client, string downloadFolder, string extractFolder) {
+        public bool Update(GitHubClient client, string modsFolder, string downloadFolder, string extractFolder,
+            bool async = false) {
             Match match;
 
             if(IsValid(client, Repository, out match)) {
                 string user = match.Groups[1].ToString();
                 string repo = match.Groups[2].ToString();
 
-                var download = BeginDownload(client, user, repo, downloadFolder, extractFolder);
+                if(async) {
+                    DownloadAsync(client, user, repo, modsFolder, downloadFolder, extractFolder);
+                }
+                else {
+                    Download(client, user, repo, modsFolder, downloadFolder, extractFolder);
+                }
+
                 return true;
             }
 
             return false;
         }
 
-        private async Task BeginDownload(GitHubClient client, string user, string repo, string downloadFolder, string extractFolder) {
+        public void Remove() {
+            if(!string.IsNullOrWhiteSpace(Name)) {
+                string[] files = Directory.GetFiles(frmMain.ModsFolder, Name + "*");
+
+                foreach(string file in files) {
+                    File.Delete(file);
+                }
+            }
+        }
+
+        private void Download(GitHubClient client, string user, string repo, string modsFolder, string downloadFolder,
+            string extractFolder) {
+            var repository = client.Repository;
+            var release = client.Repository.Release.GetLatest(user, repo).Result;
+            var assets = client.Repository.Release.GetAllAssets(user, repo, release.Id).Result;
+
+            if(assets.Count > 0) {
+                WebClient web = new WebClient();
+                var zips = assets.Where(a => a.Name.Contains(".zip"));
+                string[] urls = zips.Select(z => z.BrowserDownloadUrl).ToArray();
+                string[] files = zips.Select(z => z.Name).ToArray();
+
+                for(int i = 0; i < urls.Length; i++) {
+                    string file = Path.Combine(downloadFolder, files[i]);
+
+                    web.DownloadFile(new Uri(urls[i]), file);
+                    Unzip(modsFolder, extractFolder, file);
+                }
+            }
+        }
+
+        private async void DownloadAsync(GitHubClient client, string user, string repo, string modsFolder, string downloadFolder,
+            string extractFolder) {
             var repository = client.Repository;
             var release = await client.Repository.Release.GetLatest(user, repo);
             var assets = await client.Repository.Release.GetAllAssets(user, repo, release.Id);
@@ -68,8 +106,7 @@ namespace HacknetModManager {
                     string file = Path.Combine(downloadFolder, files[i]);
 
                     web.DownloadFileCompleted += (s, e) => {
-                        Mod mod = Unzip(extractFolder, file).Result;
-                        this.Copy(mod);
+                        Unzip(modsFolder, extractFolder, file);
                     };
 
                     web.DownloadFileAsync(new Uri(urls[i]), file);
@@ -77,14 +114,71 @@ namespace HacknetModManager {
             }
         }
 
-        public void Remove() {
-            if(!string.IsNullOrWhiteSpace(Name)) {
-                string[] files = Directory.GetFiles(frmMain.ModsFolder, Name + "*");
+        public void Unzip(string modsFolder, string extractFolder, string zipFile) {
+            string jsonFile = "";
 
-                foreach(string file in files) {
-                    File.Delete(file);
+            using(ZipArchive archive = ZipFile.OpenRead(zipFile)) {
+                foreach(ZipArchiveEntry entry in archive.Entries) {
+                    if(entry.FullName.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) {
+                        jsonFile = Path.Combine(extractFolder, entry.Name);
+                    }
+
+                    string file = Path.Combine(extractFolder, entry.FullName);
+
+                    if(File.Exists(file)) {
+                        File.Delete(file);
+                    }
+
+                    entry.ExtractToFile(Path.Combine(extractFolder, entry.FullName));
                 }
             }
+
+            if(!string.IsNullOrWhiteSpace(jsonFile) && File.Exists(jsonFile)) {
+                string modName = Path.GetFileNameWithoutExtension(jsonFile);
+                this.Copy(Parse(modName, jsonFile));
+            }
+            else {
+                this.Copy(new Mod(Path.GetFileNameWithoutExtension(zipFile)));
+            }
+
+            FileUtils.FileCopyWithReplicate(extractFolder, modsFolder, true, deleteSourceContents: true);
+        }
+
+        public async void UnzipAsync(string modsFolder, string extractFolder, string zipFile) {
+            string jsonFile = "";
+
+            using(ZipArchive archive = ZipFile.OpenRead(zipFile)) {
+                foreach(ZipArchiveEntry entry in archive.Entries) {
+                    if(entry.FullName.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) {
+                        jsonFile = Path.Combine(extractFolder, entry.Name);
+                    }
+
+                    string file = Path.Combine(extractFolder, entry.FullName);
+
+                    if(File.Exists(file)) {
+                        File.Delete(file);
+                    }
+
+                    await Task.Run(() => entry.ExtractToFile(Path.Combine(extractFolder, entry.FullName)));
+                }
+            }
+
+            if(!string.IsNullOrWhiteSpace(jsonFile) && File.Exists(jsonFile)) {
+                string modName = Path.GetFileNameWithoutExtension(jsonFile);
+                this.Copy(Parse(modName, jsonFile));
+            }
+            else {
+                this.Copy(new Mod(Path.GetFileNameWithoutExtension(zipFile)));
+            }
+
+            FileUtils.FileCopyWithReplicate(extractFolder, modsFolder, true, deleteSourceContents: true);
+        }
+
+        public static Mod Parse(string name, string file) {
+            Mod jsonMod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(file));
+            jsonMod.Name = name;
+
+            return jsonMod;
         }
 
         public static bool IsValid(GitHubClient client, string repository, out Match match) {
@@ -104,38 +198,6 @@ namespace HacknetModManager {
             }
 
             return false;
-        }
-        
-        public static Mod Parse(string name, string file) {
-            Mod jsonMod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(file));
-            jsonMod.Name = name;
-
-            return jsonMod;
-        }
-
-        public static async Task<Mod> Unzip(string extractFolder, string file) {
-            string jsonFile = "";
-            Mod mod;
-
-            using(ZipArchive archive = ZipFile.OpenRead(file)) {
-                foreach(ZipArchiveEntry entry in archive.Entries) {
-                    if(entry.FullName.EndsWith(".json", StringComparison.OrdinalIgnoreCase)) {
-                        jsonFile = Path.Combine(extractFolder, entry.Name);
-                    }
-
-                    await Task.Run(() => entry.ExtractToFile(Path.Combine(extractFolder, entry.FullName)));
-                }
-            }
-
-            if(!string.IsNullOrWhiteSpace(jsonFile) && File.Exists(jsonFile)) {
-                string modName = Path.GetFileNameWithoutExtension(jsonFile);
-                mod = Parse(modName, jsonFile);
-            }
-            else {
-                mod = new Mod(Path.GetFileNameWithoutExtension(file));
-            }
-
-            return mod;
         }
     }
 }
