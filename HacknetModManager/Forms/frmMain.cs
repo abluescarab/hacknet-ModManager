@@ -149,6 +149,14 @@ namespace HacknetModManager {
             }
         }
 
+        private void txtInfo_KeyDown(object sender, KeyEventArgs e) {
+            if(e.Control && e.KeyCode == Keys.A) {
+                e.Handled = true;
+                e.SuppressKeyPress = true;
+                txtInfo.SelectAll();
+            }
+        }
+
         private bool CheckForHacknet() {
             return File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "Hacknet.exe"));
         }
