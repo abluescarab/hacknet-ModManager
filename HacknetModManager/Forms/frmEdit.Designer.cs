@@ -199,7 +199,7 @@
             this.lbxAuthors.IntegralHeight = false;
             this.lbxAuthors.Location = new System.Drawing.Point(81, 91);
             this.lbxAuthors.Name = "lbxAuthors";
-            this.lbxAuthors.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lbxAuthors.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbxAuthors.Size = new System.Drawing.Size(147, 118);
             this.lbxAuthors.TabIndex = 18;
             // 
@@ -293,6 +293,7 @@
             // 
             // txtInfo
             // 
+            this.txtInfo.AcceptsReturn = true;
             this.txtInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.txtInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtInfo.Location = new System.Drawing.Point(334, 64);
