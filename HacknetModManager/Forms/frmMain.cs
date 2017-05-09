@@ -32,10 +32,6 @@ namespace HacknetModManager {
 
             InitializeFolders();
             LoadMods();
-
-            if(Mods.Count > 0) {
-                listMods.Items[0].Selected = true;
-            }
         }
 
         private void frmMain_Activated(object sender, EventArgs e) {
@@ -214,6 +210,10 @@ namespace HacknetModManager {
 
                 ListViewItem item = listMods.Items.Add(name);
                 item.Checked = !mod.Contains(".disabled");
+            }
+
+            if(listMods.Items.Count > 0) {
+                listMods.Items[0].Selected = true;
             }
 
             doEnableDisable = true;
