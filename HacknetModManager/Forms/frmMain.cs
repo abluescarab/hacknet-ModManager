@@ -115,6 +115,7 @@ namespace HacknetModManager {
             if(listMods.SelectedItems.Count == 1) {
                 Mod mod = Mods[e.Item.Text];
                 LoadMod(mod);
+                btnEditModInfo.Enabled = true;
             }
             else {
                 btnHomepage.Enabled = false;
