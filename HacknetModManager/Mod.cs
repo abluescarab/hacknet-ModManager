@@ -4,7 +4,6 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Octokit;
 
@@ -27,35 +26,36 @@ namespace HacknetModManager {
         public string Repository { get; set; }
         public string[] Authors { get; set; }
         public string Info { get; set; }
-        
+
         public Mod() : this("", "") { }
 
         public Mod(string name) : this(name, "") { }
 
         public Mod(string name, string repository) {
             Name = name;
+            Title = "";
+            Description = "";
+            Version = "";
+            Homepage = "";
             Repository = repository;
             Authors = new string[] { };
+            Info = "";
         }
 
         public bool Update(GitHubClient client, string modsFolder, string downloadFolder, string extractFolder,
-            Release release = null, bool async = false) {
+            Release release = null) {//, bool async = false) {
             Match match;
 
             if(IsValid(client, Repository, out match)) {
                 string user = match.Groups[1].Value;
                 string repo = match.Groups[2].Value;
-
-                if(release == null) {
-                    release = client.Repository.Release.GetLatest(user, repo).Result;
-                }
-
-                if(async) {
-                    DownloadAsync(client, release, user, repo, modsFolder, downloadFolder, extractFolder);
-                }
-                else {
-                    Download(client, release, user, repo, modsFolder, downloadFolder, extractFolder);
-                }
+                
+                //if(async) {
+                //    DownloadAsync(client, release, user, repo, modsFolder, downloadFolder, extractFolder);
+                //}
+                //else {
+                Download(client, release, match, modsFolder, downloadFolder, extractFolder);
+                //}
 
                 return true;
             }
@@ -79,7 +79,7 @@ namespace HacknetModManager {
                 writer.Write(json);
             }
         }
-        
+
         public void Remove() {
             if(!string.IsNullOrWhiteSpace(Name)) {
                 string[] files = Directory.GetFiles(frmMain.ModsFolder, Name + "*");
@@ -89,9 +89,12 @@ namespace HacknetModManager {
                 }
             }
         }
-        
-        private void Download(GitHubClient client, Release release, string user, string repo, string modsFolder,
-            string downloadFolder, string extractFolder) {
+
+        private void Download(GitHubClient client, Release release, Match validatedUrl, string modsFolder, string downloadFolder,
+            string extractFolder) {
+            string user = validatedUrl.Groups[1].Value;
+            string repo = validatedUrl.Groups[2].Value;
+
             if(release == null) {
                 release = client.Repository.Release.GetLatest(user, repo).Result;
             }
@@ -100,20 +103,34 @@ namespace HacknetModManager {
 
             if(assets.Count > 0) {
                 WebClient web = new WebClient();
-                var zips = assets.Where(a => a.Name.Contains(".zip"));
-                string[] urls = zips.Select(z => z.BrowserDownloadUrl).ToArray();
-                string[] files = zips.Select(z => z.Name).ToArray();
+                var downloads = assets.Where(a => a.Name.Contains(".zip") || a.Name.Contains(".dll"));
+                string[] urls = downloads.Select(d => d.BrowserDownloadUrl).ToArray();
+                string[] files = downloads.Select(d => d.Name).ToArray();
 
                 for(int i = 0; i < urls.Length; i++) {
-                    string file = Path.Combine(downloadFolder, files[i]);
+                    string download = Path.Combine(downloadFolder, files[i]);
 
-                    web.DownloadFile(new Uri(urls[i]), file);
-                    Unzip(modsFolder, extractFolder, file);
+                    web.DownloadFile(new Uri(urls[i]), download);
+
+                    if(download.Contains(".zip")) {
+                        Unzip(modsFolder, extractFolder, download);
+                    }
+                    else if(download.Contains(".dll")) {
+                        string json = Path.Combine(modsFolder, files[i].Replace(".dll", ".json"));
+
+                        if(File.Exists(json)) {
+                            File.Delete(json);
+                        }
+
+                        FileUtils.FileCopyWithReplicate(download, Path.Combine(modsFolder, files[i]), true, deleteSource: true);
+                        this.Copy(new Mod() { Name = this.Name, Repository = validatedUrl.Value });
+                        WriteInfo(modsFolder);
+                    }
                 }
             }
         }
 
-        private async void DownloadAsync(GitHubClient client, Release release, string user, string repo, string modsFolder,
+        /*private async void DownloadAsync(GitHubClient client, Release release, string user, string repo, string modsFolder,
             string downloadFolder, string extractFolder) {
             if(release == null) {
                 release = await client.Repository.Release.GetLatest(user, repo);
@@ -123,21 +140,35 @@ namespace HacknetModManager {
 
             if(assets.Count > 0) {
                 WebClient web = new WebClient();
-                var zips = assets.Where(a => a.Name.Contains(".zip"));
-                string[] urls = zips.Select(z => z.BrowserDownloadUrl).ToArray();
-                string[] files = zips.Select(z => z.Name).ToArray();
+                var downloads = assets.Where(a => a.Name.Contains(".zip") || a.Name.Contains(".dll"));
+                string[] urls = downloads.Select(d => d.BrowserDownloadUrl).ToArray();
+                string[] files = downloads.Select(d => d.Name).ToArray();
 
                 for(int i = 0; i < urls.Length; i++) {
-                    string file = Path.Combine(downloadFolder, files[i]);
+                    string filename = files[i];
+                    string download = Path.Combine(downloadFolder, filename);
 
                     web.DownloadFileCompleted += (s, e) => {
-                        Unzip(modsFolder, extractFolder, file);
+                        if(download.Contains(".zip")) {
+                            Unzip(modsFolder, extractFolder, download);
+                        }
+                        else if(download.Contains(".dll")) {
+                            string json = Path.Combine(modsFolder, filename.Replace(".dll", ".json"));
+
+                            if(File.Exists(json)) {
+                                File.Delete(json);
+                            }
+
+                            FileUtils.FileCopyWithReplicate(download, Path.Combine(modsFolder, filename), true, deleteSource: true);
+                            this.Copy(new Mod() { Name = this.Name, Repository = "https://github.com/" + user + "/" + repo });
+                            WriteInfo(modsFolder);
+                        }
                     };
 
-                    web.DownloadFileAsync(new Uri(urls[i]), file);
+                    web.DownloadFileAsync(new Uri(urls[i]), download);
                 }
             }
-        }
+        }*/
 
         public void Unzip(string modsFolder, string extractFolder, string zipFile) {
             string jsonFile = "";
@@ -169,7 +200,7 @@ namespace HacknetModManager {
             FileUtils.FileCopyWithReplicate(extractFolder, modsFolder, true, deleteSourceContents: true);
         }
 
-        public async void UnzipAsync(string modsFolder, string extractFolder, string zipFile) {
+        /*public async void UnzipAsync(string modsFolder, string extractFolder, string zipFile) {
             string jsonFile = "";
 
             using(ZipArchive archive = ZipFile.OpenRead(zipFile)) {
@@ -197,7 +228,7 @@ namespace HacknetModManager {
             }
 
             FileUtils.FileCopyWithReplicate(extractFolder, modsFolder, true, deleteSourceContents: true);
-        }
+        }*/
 
         public static Mod Parse(string name, string file) {
             Mod jsonMod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(file));
@@ -208,7 +239,7 @@ namespace HacknetModManager {
 
         public static bool IsValid(GitHubClient client, string repository, out Match match) {
             match = Regex.Match(repository, @".*github\.com\/(.*?)\/([\w\d-_.]+)\/?");
-            
+
             if(client != null && !string.IsNullOrWhiteSpace(repository) && match.Success) {
                 try {
                     SearchRepositoriesRequest request = new SearchRepositoriesRequest(match.Groups[2].Value) {

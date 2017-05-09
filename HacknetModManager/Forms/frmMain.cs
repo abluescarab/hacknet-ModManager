@@ -88,7 +88,8 @@ namespace HacknetModManager {
         private void btnUpdate_Click(object sender, EventArgs e) {
             foreach(ListViewItem item in listMods.SelectedItems) {
                 Mod mod = Mods[item.Text];
-                mod.Update(Client, ModsFolder, ManagerFolder, ExtractFolder, async: true);
+                mod.Update(Client, ModsFolder, ManagerFolder, ExtractFolder);
+                LoadMod(mod);
             }
         }
 
@@ -97,7 +98,8 @@ namespace HacknetModManager {
             Mod mod = Mods[listMods.SelectedItems[0].Text];
             
             if(form.ShowDialog(Client, mod) == DialogResult.OK) {
-                mod.Update(Client, ModsFolder, ManagerFolder, ExtractFolder, form.Release, true);
+                mod.Update(Client, ModsFolder, ManagerFolder, ExtractFolder, form.Release);
+                LoadMod(mod);
             }
         }
 
