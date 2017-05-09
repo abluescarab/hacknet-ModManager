@@ -33,7 +33,6 @@ namespace HacknetModManager {
 
             if(Mods.Count > 0) {
                 listMods.Items[0].Selected = true;
-                
             }
         }
 
