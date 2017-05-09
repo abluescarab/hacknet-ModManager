@@ -60,7 +60,7 @@
             this.tlpButtons.RowCount = 1;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpButtons.Size = new System.Drawing.Size(160, 25);
-            this.tlpButtons.TabIndex = 7;
+            this.tlpButtons.TabIndex = 11;
             // 
             // btnOK
             // 
@@ -73,7 +73,7 @@
             this.btnOK.Margin = new System.Windows.Forms.Padding(0, 0, 3, 0);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(77, 25);
-            this.btnOK.TabIndex = 2;
+            this.btnOK.TabIndex = 12;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = false;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -90,7 +90,7 @@
             this.btnCancel.Margin = new System.Windows.Forms.Padding(3, 0, 0, 0);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(77, 25);
-            this.btnCancel.TabIndex = 3;
+            this.btnCancel.TabIndex = 13;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -113,7 +113,7 @@
             this.txtTitle.Location = new System.Drawing.Point(81, 13);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(178, 20);
-            this.txtTitle.TabIndex = 9;
+            this.txtTitle.TabIndex = 0;
             // 
             // txtDescription
             // 
@@ -123,7 +123,7 @@
             this.txtDescription.Location = new System.Drawing.Point(334, 12);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(178, 20);
-            this.txtDescription.TabIndex = 10;
+            this.txtDescription.TabIndex = 8;
             // 
             // label2
             // 
@@ -153,7 +153,7 @@
             this.txtVersion.Location = new System.Drawing.Point(81, 39);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.Size = new System.Drawing.Size(178, 20);
-            this.txtVersion.TabIndex = 13;
+            this.txtVersion.TabIndex = 1;
             // 
             // txtHomepage
             // 
@@ -163,7 +163,7 @@
             this.txtHomepage.Location = new System.Drawing.Point(334, 38);
             this.txtHomepage.Name = "txtHomepage";
             this.txtHomepage.Size = new System.Drawing.Size(178, 20);
-            this.txtHomepage.TabIndex = 14;
+            this.txtHomepage.TabIndex = 9;
             // 
             // label4
             // 
@@ -193,7 +193,7 @@
             this.txtRepository.Location = new System.Drawing.Point(81, 65);
             this.txtRepository.Name = "txtRepository";
             this.txtRepository.Size = new System.Drawing.Size(178, 20);
-            this.txtRepository.TabIndex = 16;
+            this.txtRepository.TabIndex = 2;
             // 
             // lbxAuthors
             // 
@@ -206,7 +206,7 @@
             this.lbxAuthors.Name = "lbxAuthors";
             this.lbxAuthors.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.lbxAuthors.Size = new System.Drawing.Size(147, 118);
-            this.lbxAuthors.TabIndex = 18;
+            this.lbxAuthors.TabIndex = 3;
             // 
             // label6
             // 
@@ -231,7 +231,7 @@
             this.btnMoveDown.Location = new System.Drawing.Point(234, 122);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(25, 25);
-            this.btnMoveDown.TabIndex = 23;
+            this.btnMoveDown.TabIndex = 5;
             this.btnMoveDown.UseVisualStyleBackColor = false;
             this.btnMoveDown.Click += new System.EventHandler(this.btnMoveDown_Click);
             // 
@@ -248,7 +248,7 @@
             this.btnMoveUp.Location = new System.Drawing.Point(234, 91);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(25, 25);
-            this.btnMoveUp.TabIndex = 22;
+            this.btnMoveUp.TabIndex = 4;
             this.btnMoveUp.UseVisualStyleBackColor = false;
             this.btnMoveUp.Click += new System.EventHandler(this.btnMoveUp_Click);
             // 
@@ -265,7 +265,7 @@
             this.btnRemove.Location = new System.Drawing.Point(234, 184);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(25, 25);
-            this.btnRemove.TabIndex = 20;
+            this.btnRemove.TabIndex = 7;
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
             // 
@@ -282,7 +282,7 @@
             this.btnAdd.Location = new System.Drawing.Point(234, 153);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 25);
-            this.btnAdd.TabIndex = 19;
+            this.btnAdd.TabIndex = 6;
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -306,7 +306,7 @@
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.Size = new System.Drawing.Size(178, 144);
-            this.txtInfo.TabIndex = 24;
+            this.txtInfo.TabIndex = 10;
             // 
             // frmEdit
             // 
