@@ -27,7 +27,7 @@ namespace HacknetModManager {
         public string Repository { get; set; }
         public string[] Authors { get; set; }
         public string Info { get; set; }
-
+        
         public Mod() : this("", "") { }
 
         public Mod(string name) : this(name, "") { }
@@ -39,18 +39,22 @@ namespace HacknetModManager {
         }
 
         public bool Update(GitHubClient client, string modsFolder, string downloadFolder, string extractFolder,
-            bool async = false) {
+            Release release = null, bool async = false) {
             Match match;
 
             if(IsValid(client, Repository, out match)) {
                 string user = match.Groups[1].ToString();
                 string repo = match.Groups[2].ToString();
 
+                if(release == null) {
+                    release = client.Repository.Release.GetLatest(user, repo).Result;
+                }
+
                 if(async) {
-                    DownloadAsync(client, user, repo, modsFolder, downloadFolder, extractFolder);
+                    DownloadAsync(client, release, user, repo, modsFolder, downloadFolder, extractFolder);
                 }
                 else {
-                    Download(client, user, repo, modsFolder, downloadFolder, extractFolder);
+                    Download(client, release, user, repo, modsFolder, downloadFolder, extractFolder);
                 }
 
                 return true;
@@ -58,7 +62,7 @@ namespace HacknetModManager {
 
             return false;
         }
-
+        
         public void Remove() {
             if(!string.IsNullOrWhiteSpace(Name)) {
                 string[] files = Directory.GetFiles(frmMain.ModsFolder, Name + "*");
@@ -68,11 +72,13 @@ namespace HacknetModManager {
                 }
             }
         }
+        
+        private void Download(GitHubClient client, Release release, string user, string repo, string modsFolder,
+            string downloadFolder, string extractFolder) {
+            if(release == null) {
+                release = client.Repository.Release.GetLatest(user, repo).Result;
+            }
 
-        private void Download(GitHubClient client, string user, string repo, string modsFolder, string downloadFolder,
-            string extractFolder) {
-            var repository = client.Repository;
-            var release = client.Repository.Release.GetLatest(user, repo).Result;
             var assets = client.Repository.Release.GetAllAssets(user, repo, release.Id).Result;
 
             if(assets.Count > 0) {
@@ -90,10 +96,12 @@ namespace HacknetModManager {
             }
         }
 
-        private async void DownloadAsync(GitHubClient client, string user, string repo, string modsFolder, string downloadFolder,
-            string extractFolder) {
-            var repository = client.Repository;
-            var release = await client.Repository.Release.GetLatest(user, repo);
+        private async void DownloadAsync(GitHubClient client, Release release, string user, string repo, string modsFolder,
+            string downloadFolder, string extractFolder) {
+            if(release == null) {
+                release = await client.Repository.Release.GetLatest(user, repo);
+            }
+
             var assets = await client.Repository.Release.GetAllAssets(user, repo, release.Id);
 
             if(assets.Count > 0) {
