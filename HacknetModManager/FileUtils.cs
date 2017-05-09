@@ -41,6 +41,27 @@ namespace HacknetModManager {
             return files.ToArray();
         }
 
+        public static List<string> Unzip(string file, string extractFolder) {
+            List<string> files = new List<string>();
+
+            if(!string.IsNullOrWhiteSpace(file) && file.EndsWith(file) && File.Exists(file)) {
+                using(ZipArchive archive = ZipFile.OpenRead(file)) {
+                    foreach(ZipArchiveEntry entry in archive.Entries) {
+                        string extracted = Path.Combine(extractFolder, entry.FullName);
+
+                        if(File.Exists(extracted)) {
+                            File.Delete(extracted);
+                        }
+
+                        entry.ExtractToFile(extracted);
+                        files.Add(extracted);
+                    }
+                }
+            }
+
+            return files;
+        }
+        
         // --------------------------------------------------------------------
         // Following source modified from http://stackoverflow.com/a/12292399/567983
 
