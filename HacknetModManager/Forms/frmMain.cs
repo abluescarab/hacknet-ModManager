@@ -112,7 +112,7 @@ namespace HacknetModManager {
         }
 
         private void btnUpdateModManager_Click(object sender, EventArgs e) {
-
+            // todo: update mod manager
         }
 
         private void listMods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
@@ -202,7 +202,7 @@ namespace HacknetModManager {
             var jsons = Directory.GetFiles(ModsFolder, "*.json", SearchOption.TopDirectoryOnly);
 
             foreach(string mod in mods) {
-                string name = Regex.Match(mod.Remove(0, mod.LastIndexOf("\\") + 1), @"(.*)\.dll.*").Groups[1].ToString();
+                string name = Regex.Match(mod.Remove(0, mod.LastIndexOf("\\") + 1), @"(.*)\.dll.*").Groups[1].Value;
                 string json = jsons.FirstOrDefault(j => Regex.IsMatch(j, @".*\\" + name + @"\.json"));
 
                 if(!string.IsNullOrWhiteSpace(json)) {

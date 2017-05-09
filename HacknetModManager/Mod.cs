@@ -43,8 +43,8 @@ namespace HacknetModManager {
             Match match;
 
             if(IsValid(client, Repository, out match)) {
-                string user = match.Groups[1].ToString();
-                string repo = match.Groups[2].ToString();
+                string user = match.Groups[1].Value;
+                string repo = match.Groups[2].Value;
 
                 if(release == null) {
                     release = client.Repository.Release.GetLatest(user, repo).Result;
@@ -211,8 +211,8 @@ namespace HacknetModManager {
             
             if(client != null && !string.IsNullOrWhiteSpace(repository) && match.Success) {
                 try {
-                    SearchRepositoriesRequest request = new SearchRepositoriesRequest(repo) {
-                        User = match.Groups[1].ToString()
+                    SearchRepositoriesRequest request = new SearchRepositoriesRequest(match.Groups[2].Value) {
+                        User = match.Groups[1].Value
                     };
 
                     return client.Search.SearchRepo(request).Result.TotalCount > 0;
