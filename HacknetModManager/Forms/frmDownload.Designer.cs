@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.listReleases = new System.Windows.Forms.ListBox();
+            this.lbxReleases = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
@@ -31,17 +31,17 @@
             this.tlpButtons.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listReleases
+            // lbxReleases
             // 
-            this.listReleases.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.lbxReleases.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listReleases.FormattingEnabled = true;
-            this.listReleases.IntegralHeight = false;
-            this.listReleases.Location = new System.Drawing.Point(12, 25);
-            this.listReleases.Name = "listReleases";
-            this.listReleases.Size = new System.Drawing.Size(221, 145);
-            this.listReleases.TabIndex = 0;
+            this.lbxReleases.FormattingEnabled = true;
+            this.lbxReleases.IntegralHeight = false;
+            this.lbxReleases.Location = new System.Drawing.Point(12, 25);
+            this.lbxReleases.Name = "lbxReleases";
+            this.lbxReleases.Size = new System.Drawing.Size(221, 145);
+            this.lbxReleases.TabIndex = 0;
             // 
             // label1
             // 
@@ -62,6 +62,7 @@
             this.btnOK.TabIndex = 2;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // btnCancel
             // 
@@ -74,6 +75,7 @@
             this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // tlpButtons
             // 
@@ -90,7 +92,7 @@
             this.tlpButtons.Size = new System.Drawing.Size(160, 25);
             this.tlpButtons.TabIndex = 5;
             // 
-            // windowDownload
+            // frmDownload
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -99,11 +101,11 @@
             this.ClientSize = new System.Drawing.Size(245, 213);
             this.Controls.Add(this.tlpButtons);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listReleases);
+            this.Controls.Add(this.lbxReleases);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "windowDownload";
+            this.Name = "frmDownload";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -117,7 +119,7 @@
 
         #endregion
 
-        internal System.Windows.Forms.ListBox listReleases;
+        internal System.Windows.Forms.ListBox lbxReleases;
         private System.Windows.Forms.Label label1;
         internal System.Windows.Forms.Button btnOK;
         internal System.Windows.Forms.Button btnCancel;
