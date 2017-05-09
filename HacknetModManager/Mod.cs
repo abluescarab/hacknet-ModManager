@@ -207,11 +207,11 @@ namespace HacknetModManager {
         }
 
         public static bool IsValid(GitHubClient client, string repository, out Match match) {
-            match = Regex.Match(repository, @".*github\.com\/(.*?)\/(.*)\/");
-
+            match = Regex.Match(repository, @".*github\.com\/(.*?)\/([\w\d-_.]+)\/?");
+            
             if(client != null && !string.IsNullOrWhiteSpace(repository) && match.Success) {
                 try {
-                    SearchRepositoriesRequest request = new SearchRepositoriesRequest(match.Groups[2].ToString()) {
+                    SearchRepositoriesRequest request = new SearchRepositoriesRequest(repo) {
                         User = match.Groups[1].ToString()
                     };
 
