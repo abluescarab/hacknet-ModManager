@@ -109,6 +109,7 @@
             // 
             this.txtTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtTitle.ForeColor = System.Drawing.Color.White;
             this.txtTitle.Location = new System.Drawing.Point(81, 13);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(178, 20);
@@ -118,6 +119,7 @@
             // 
             this.txtDescription.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.txtDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDescription.ForeColor = System.Drawing.Color.White;
             this.txtDescription.Location = new System.Drawing.Point(334, 12);
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.Size = new System.Drawing.Size(178, 20);
@@ -147,6 +149,7 @@
             // 
             this.txtVersion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.txtVersion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtVersion.ForeColor = System.Drawing.Color.White;
             this.txtVersion.Location = new System.Drawing.Point(81, 39);
             this.txtVersion.Name = "txtVersion";
             this.txtVersion.Size = new System.Drawing.Size(178, 20);
@@ -156,6 +159,7 @@
             // 
             this.txtHomepage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.txtHomepage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtHomepage.ForeColor = System.Drawing.Color.White;
             this.txtHomepage.Location = new System.Drawing.Point(334, 38);
             this.txtHomepage.Name = "txtHomepage";
             this.txtHomepage.Size = new System.Drawing.Size(178, 20);
@@ -185,6 +189,7 @@
             // 
             this.txtRepository.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.txtRepository.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtRepository.ForeColor = System.Drawing.Color.White;
             this.txtRepository.Location = new System.Drawing.Point(81, 65);
             this.txtRepository.Name = "txtRepository";
             this.txtRepository.Size = new System.Drawing.Size(178, 20);
@@ -296,6 +301,7 @@
             this.txtInfo.AcceptsReturn = true;
             this.txtInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
             this.txtInfo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtInfo.ForeColor = System.Drawing.Color.White;
             this.txtInfo.Location = new System.Drawing.Point(334, 64);
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
