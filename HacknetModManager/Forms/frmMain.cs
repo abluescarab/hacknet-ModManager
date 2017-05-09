@@ -94,6 +94,10 @@ namespace HacknetModManager {
             }
         }
 
+        private void btnChooseRelease_Click(object sender, EventArgs e) {
+
+        }
+
         private void listMods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
             if(listMods.SelectedItems.Count == 1) {
                 Mod mod = Mods[e.Item.Text];
@@ -138,7 +142,9 @@ namespace HacknetModManager {
             }
             else lblTitleVersion.Text = mod.Name;
 
-            btnHomepage.Enabled = !string.IsNullOrWhiteSpace(mod.Homepage);
+            btnHomepage.Enabled =
+                btnUpdate.Enabled =
+                btnChooseRelease.Enabled = !string.IsNullOrWhiteSpace(mod.Homepage);
             lblDescription.Text = (string.IsNullOrWhiteSpace(mod.Description) ? "N/A" : mod.Description);
             lblAuthors.Text = (mod.Authors.Length == 0 ? "N/A" : string.Join(", ", mod.Authors));
             txtInfo.Text = (string.IsNullOrWhiteSpace(mod.Info) ? "No information." : mod.Info);
