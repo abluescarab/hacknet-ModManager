@@ -422,7 +422,7 @@
             this.btnUpdateModManager.Name = "btnUpdateModManager";
             this.btnUpdateModManager.Size = new System.Drawing.Size(121, 25);
             this.btnUpdateModManager.TabIndex = 7;
-            this.btnUpdateModManager.Text = "Update Mod Manager";
+            this.btnUpdateModManager.Text = "Check for Updates";
             this.btnUpdateModManager.UseVisualStyleBackColor = false;
             // 
             // btnPlayUnmodded
