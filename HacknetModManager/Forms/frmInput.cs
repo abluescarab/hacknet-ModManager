@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace HacknetModManager {
     public partial class frmInput : Form {
-        public string Input { get; private set; }
+        public string Answer { get; private set; }
 
         public frmInput() {
             InitializeComponent();
@@ -23,12 +23,12 @@ namespace HacknetModManager {
         }
 
         private void btnOK_Click(object sender, EventArgs e) {
-            Input = txtInput.Text;
+            Answer = txtInput.Text;
             Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e) {
-            Input = "";
+            Answer = "";
             Close();
         }
     }
