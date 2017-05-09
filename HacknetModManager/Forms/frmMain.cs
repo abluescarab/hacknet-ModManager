@@ -10,7 +10,7 @@ using System.Windows.Forms;
 namespace HacknetModManager {
     public partial class frmMain : Form {
         public static string ModsFolder { get; private set; }
-        public static string DownloadsFolder { get; private set; }
+        public static string ManagerFolder { get; private set; }
         public static string ExtractFolder { get; private set; }
         public static Dictionary<string, Mod> Mods { get; private set; }
         public static Octokit.GitHubClient Client { get; private set; }
@@ -92,7 +92,7 @@ namespace HacknetModManager {
         private void btnUpdate_Click(object sender, EventArgs e) {
             foreach(ListViewItem item in listMods.SelectedItems) {
                 Mod mod = Mods[item.Text];
-                mod.Update(Client, ModsFolder, DownloadsFolder, ExtractFolder, async: true);
+                mod.Update(Client, ModsFolder, ManagerFolder, ExtractFolder, async: true);
             }
         }
 
@@ -148,11 +148,11 @@ namespace HacknetModManager {
             string dir = Directory.GetCurrentDirectory();
 
             ModsFolder = Path.Combine(dir, "Mods");
-            DownloadsFolder = Path.Combine(dir, "ModManager");
+            ManagerFolder = Path.Combine(dir, "ModManager");
             ExtractFolder = Path.Combine(ModsFolder, "Downloads");
 
             FileUtils.CreateFolder(ModsFolder);
-            FileUtils.CreateFolder(DownloadsFolder);
+            FileUtils.CreateFolder(ManagerFolder);
             FileUtils.CreateFolder(ExtractFolder);
         }
 
