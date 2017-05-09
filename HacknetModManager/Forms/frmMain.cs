@@ -118,7 +118,7 @@ namespace HacknetModManager {
                 btnEditModInfo.Enabled = true;
             }
             else {
-                btnHomepage.Enabled = false;
+                btnHomepage.Enabled = btnUpdate.Enabled = btnChooseRelease.Enabled = false;
                 btnEditModInfo.Enabled = false;
                 lblTitleVersion.Text = "N/A";
                 lblDescription.Text = "N/A";
