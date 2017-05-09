@@ -55,7 +55,7 @@
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpButtons.Controls.Add(this.btnOK, 0, 0);
             this.tlpButtons.Controls.Add(this.btnCancel, 1, 0);
-            this.tlpButtons.Location = new System.Drawing.Point(352, 215);
+            this.tlpButtons.Location = new System.Drawing.Point(352, 216);
             this.tlpButtons.Name = "tlpButtons";
             this.tlpButtons.RowCount = 1;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -201,11 +201,10 @@
             this.lbxAuthors.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbxAuthors.ForeColor = System.Drawing.Color.White;
             this.lbxAuthors.FormattingEnabled = true;
-            this.lbxAuthors.IntegralHeight = false;
             this.lbxAuthors.Location = new System.Drawing.Point(81, 91);
             this.lbxAuthors.Name = "lbxAuthors";
             this.lbxAuthors.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbxAuthors.Size = new System.Drawing.Size(147, 118);
+            this.lbxAuthors.Size = new System.Drawing.Size(147, 119);
             this.lbxAuthors.TabIndex = 3;
             // 
             // label6
@@ -228,7 +227,7 @@
             this.btnMoveDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMoveDown.ForeColor = System.Drawing.Color.White;
             this.btnMoveDown.Image = global::HacknetModManager.Properties.Resources.arrow_down;
-            this.btnMoveDown.Location = new System.Drawing.Point(234, 122);
+            this.btnMoveDown.Location = new System.Drawing.Point(234, 184);
             this.btnMoveDown.Name = "btnMoveDown";
             this.btnMoveDown.Size = new System.Drawing.Size(25, 25);
             this.btnMoveDown.TabIndex = 5;
@@ -245,7 +244,7 @@
             this.btnMoveUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMoveUp.ForeColor = System.Drawing.Color.White;
             this.btnMoveUp.Image = global::HacknetModManager.Properties.Resources.arrow_up;
-            this.btnMoveUp.Location = new System.Drawing.Point(234, 91);
+            this.btnMoveUp.Location = new System.Drawing.Point(234, 153);
             this.btnMoveUp.Name = "btnMoveUp";
             this.btnMoveUp.Size = new System.Drawing.Size(25, 25);
             this.btnMoveUp.TabIndex = 4;
@@ -262,7 +261,7 @@
             this.btnRemove.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRemove.ForeColor = System.Drawing.Color.White;
             this.btnRemove.Image = global::HacknetModManager.Properties.Resources.delete;
-            this.btnRemove.Location = new System.Drawing.Point(234, 184);
+            this.btnRemove.Location = new System.Drawing.Point(234, 122);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(25, 25);
             this.btnRemove.TabIndex = 7;
@@ -279,7 +278,7 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.ForeColor = System.Drawing.Color.White;
             this.btnAdd.Image = global::HacknetModManager.Properties.Resources.add;
-            this.btnAdd.Location = new System.Drawing.Point(234, 153);
+            this.btnAdd.Location = new System.Drawing.Point(234, 91);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(25, 25);
             this.btnAdd.TabIndex = 6;
@@ -305,7 +304,7 @@
             this.txtInfo.Location = new System.Drawing.Point(334, 64);
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
-            this.txtInfo.Size = new System.Drawing.Size(178, 144);
+            this.txtInfo.Size = new System.Drawing.Size(178, 146);
             this.txtInfo.TabIndex = 10;
             // 
             // frmEdit
@@ -315,7 +314,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(524, 252);
+            this.ClientSize = new System.Drawing.Size(524, 253);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtInfo);
             this.Controls.Add(this.btnMoveDown);
