@@ -24,11 +24,13 @@ namespace HacknetModManager {
 
         private void btnOK_Click(object sender, EventArgs e) {
             Answer = txtInput.Text;
+            DialogResult = DialogResult.OK;
             Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e) {
             Answer = "";
+            DialogResult = DialogResult.Cancel;
             Close();
         }
     }
