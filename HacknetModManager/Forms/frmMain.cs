@@ -107,8 +107,8 @@ namespace HacknetModManager {
             if(form.ShowDialog(mod) == DialogResult.OK) {
                 LoadMod(mod);
             }
-
-            // todo: write info file
+            
+            mod.WriteInfo(ModsFolder);
         }
 
         private void btnUpdateModManager_Click(object sender, EventArgs e) {

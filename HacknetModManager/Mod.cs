@@ -62,6 +62,28 @@ namespace HacknetModManager {
 
             return false;
         }
+
+        public void WriteInfo(string modsFolder) {
+            string json = JsonConvert.SerializeObject(this, Formatting.Indented);
+            string file = Path.Combine(modsFolder, Name + ".json");
+            FileStream stream;
+
+            if(!File.Exists(file)) {
+                stream = File.Create(file);
+            }
+            else {
+                stream = File.OpenWrite(file);
+            }
+
+            using(StreamWriter writer = new StreamWriter(stream)) {
+                writer.Write(json);
+            }
+            
+            //Mod jsonMod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(file));
+            //jsonMod.Name = name;
+
+            //return jsonMod;
+        }
         
         public void Remove() {
             if(!string.IsNullOrWhiteSpace(Name)) {
