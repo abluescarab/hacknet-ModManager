@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.lbxReleases = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblChooseRelease = new System.Windows.Forms.Label();
             this.btnOK = new HacknetModManager.Controls.DarkButton();
             this.btnCancel = new HacknetModManager.Controls.DarkButton();
             this.tlpButtons = new System.Windows.Forms.TableLayoutPanel();
@@ -43,18 +43,18 @@
             this.lbxReleases.IntegralHeight = false;
             this.lbxReleases.Location = new System.Drawing.Point(12, 25);
             this.lbxReleases.Name = "lbxReleases";
-            this.lbxReleases.Size = new System.Drawing.Size(221, 145);
+            this.lbxReleases.Size = new System.Drawing.Size(300, 145);
             this.lbxReleases.TabIndex = 0;
             // 
-            // label1
+            // lblChooseRelease
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Select which release of this mod to download:";
+            this.lblChooseRelease.AutoSize = true;
+            this.lblChooseRelease.ForeColor = System.Drawing.Color.White;
+            this.lblChooseRelease.Location = new System.Drawing.Point(12, 9);
+            this.lblChooseRelease.Name = "lblChooseRelease";
+            this.lblChooseRelease.Size = new System.Drawing.Size(204, 13);
+            this.lblChooseRelease.TabIndex = 1;
+            this.lblChooseRelease.Text = "Choose which release of {0} to download:";
             // 
             // btnOK
             // 
@@ -96,7 +96,7 @@
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpButtons.Controls.Add(this.btnOK, 0, 0);
             this.tlpButtons.Controls.Add(this.btnCancel, 1, 0);
-            this.tlpButtons.Location = new System.Drawing.Point(73, 176);
+            this.tlpButtons.Location = new System.Drawing.Point(152, 176);
             this.tlpButtons.Name = "tlpButtons";
             this.tlpButtons.RowCount = 1;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -110,9 +110,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(245, 213);
+            this.ClientSize = new System.Drawing.Size(324, 213);
             this.Controls.Add(this.tlpButtons);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblChooseRelease);
             this.Controls.Add(this.lbxReleases);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -131,7 +131,7 @@
         #endregion
 
         internal System.Windows.Forms.ListBox lbxReleases;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblChooseRelease;
         internal HacknetModManager.Controls.DarkButton btnOK;
         internal HacknetModManager.Controls.DarkButton btnCancel;
         private System.Windows.Forms.TableLayoutPanel tlpButtons;

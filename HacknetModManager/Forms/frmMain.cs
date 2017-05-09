@@ -93,7 +93,12 @@ namespace HacknetModManager {
         }
 
         private void btnChooseRelease_Click(object sender, EventArgs e) {
-            // todo: open release window
+            frmDownload form = new frmDownload();
+            Mod mod = Mods[listMods.SelectedItems[0].Text];
+            
+            if(form.ShowDialog(Client, mod) == DialogResult.OK) {
+                mod.Update(Client, ModsFolder, ManagerFolder, ExtractFolder, form.Release, true);
+            }
         }
 
         private void btnEditModInfo_Click(object sender, EventArgs e) {
