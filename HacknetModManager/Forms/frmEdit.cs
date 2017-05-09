@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HacknetModManager {
@@ -30,34 +25,31 @@ namespace HacknetModManager {
             foreach(string author in mod.Authors) {
                 lbxAuthors.Items.Add(author);
             }
-
-            if(lbxAuthors.Items.Count > 0)
-                lbxAuthors.SelectedIndex = 0;
-            else {
-                lbxAuthors.Enabled = false;
-                lbxAuthors.Items.Add(noAuthors);
-            }
+            
+            CheckAuthors();
 
             return ShowDialog();
         }
 
         private void btnMoveUp_Click(object sender, EventArgs e) {
-
+            lbxAuthors.MoveUp();
         }
 
         private void btnMoveDown_Click(object sender, EventArgs e) {
-
+            lbxAuthors.MoveDown();
         }
 
         private void btnAdd_Click(object sender, EventArgs e) {
             frmInput input = new frmInput();
             if(input.ShowDialog("Add Author", "Enter an author's name:") == DialogResult.OK) {
-                if(lbxAuthors.Items.Contains(noAuthors)) {
-                    lbxAuthors.Items.Clear();
-                }
+                if(!string.IsNullOrWhiteSpace(input.Answer) && !lbxAuthors.Items.Contains(input.Answer)) {
+                    if(lbxAuthors.Items.Contains(noAuthors)) {
+                        lbxAuthors.Items.Clear();
+                    }
 
-                lbxAuthors.Items.Add(input.Answer);
-                lbxAuthors.Enabled = true;
+                    lbxAuthors.Items.Add(input.Answer);
+                    CheckAuthors();
+                }
             }
         }
 
@@ -68,10 +60,7 @@ namespace HacknetModManager {
                 }
             }
 
-            if(lbxAuthors.Items.Count == 0) {
-                lbxAuthors.Enabled = false;
-                lbxAuthors.Items.Add(noAuthors);
-            }
+            CheckAuthors();
         }
 
         private void btnOK_Click(object sender, EventArgs e) {
@@ -90,6 +79,17 @@ namespace HacknetModManager {
         private void btnCancel_Click(object sender, EventArgs e) {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private void CheckAuthors() {
+            lbxAuthors.Enabled = btnMoveDown.Enabled = btnMoveUp.Enabled = btnRemove.Enabled = lbxAuthors.Items.Count > 0;
+
+            if(lbxAuthors.Items.Count == 0) {
+                lbxAuthors.Items.Add(noAuthors);
+            }
+            else {
+                lbxAuthors.SelectedIndex = 0;
+            }
         }
     }
 }
