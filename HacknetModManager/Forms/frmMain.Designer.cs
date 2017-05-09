@@ -34,9 +34,10 @@
             this.btnEnableAll = new System.Windows.Forms.Button();
             this.btnOpenModFolder = new System.Windows.Forms.Button();
             this.tlpSide = new System.Windows.Forms.TableLayoutPanel();
+            this.btnHomepage = new System.Windows.Forms.Button();
             this.btnCreateMod = new System.Windows.Forms.Button();
             this.btnEditMod = new System.Windows.Forms.Button();
-            this.btnHomepage = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.txtInfo = new System.Windows.Forms.TextBox();
             this.lblAuthors = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
@@ -44,9 +45,9 @@
             this.tlpPlay = new System.Windows.Forms.TableLayoutPanel();
             this.btnPlayUnmodded = new System.Windows.Forms.Button();
             this.btnPlayPathfinder = new System.Windows.Forms.Button();
-            this.btnUpdate = new System.Windows.Forms.Button();
             this.status = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnChooseRelease = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -82,7 +83,7 @@
             this.splitContainer1.Panel2.Controls.Add(this.lblTitleVersion);
             this.splitContainer1.Panel2.Controls.Add(this.tlpPlay);
             this.splitContainer1.Panel2MinSize = 215;
-            this.splitContainer1.Size = new System.Drawing.Size(534, 246);
+            this.splitContainer1.Size = new System.Drawing.Size(534, 376);
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 3;
             // 
@@ -95,7 +96,7 @@
             this.listMods.Location = new System.Drawing.Point(12, 50);
             this.listMods.Name = "listMods";
             this.listMods.ShowGroups = false;
-            this.listMods.Size = new System.Drawing.Size(185, 156);
+            this.listMods.Size = new System.Drawing.Size(185, 286);
             this.listMods.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listMods.TabIndex = 7;
             this.listMods.UseCompatibleStateImageBehavior = false;
@@ -113,7 +114,7 @@
             this.tlpBottom.Controls.Add(this.btnRemove, 1, 0);
             this.tlpBottom.Controls.Add(this.btnInstall, 0, 0);
             this.tlpBottom.Controls.Add(this.btnRefresh, 2, 0);
-            this.tlpBottom.Location = new System.Drawing.Point(12, 212);
+            this.tlpBottom.Location = new System.Drawing.Point(12, 342);
             this.tlpBottom.Name = "tlpBottom";
             this.tlpBottom.RowCount = 1;
             this.tlpBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -160,7 +161,7 @@
             this.tlpTop.ColumnCount = 3;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tlpTop.Controls.Add(this.btnDisableAll, 1, 0);
             this.tlpTop.Controls.Add(this.btnEnableAll, 0, 0);
             this.tlpTop.Controls.Add(this.btnOpenModFolder, 2, 0);
@@ -174,7 +175,7 @@
             // btnDisableAll
             // 
             this.btnDisableAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisableAll.Location = new System.Drawing.Point(77, 3);
+            this.btnDisableAll.Location = new System.Drawing.Point(76, 3);
             this.btnDisableAll.Name = "btnDisableAll";
             this.btnDisableAll.Size = new System.Drawing.Size(68, 25);
             this.btnDisableAll.TabIndex = 4;
@@ -187,7 +188,7 @@
             this.btnEnableAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEnableAll.Location = new System.Drawing.Point(3, 3);
             this.btnEnableAll.Name = "btnEnableAll";
-            this.btnEnableAll.Size = new System.Drawing.Size(68, 25);
+            this.btnEnableAll.Size = new System.Drawing.Size(67, 25);
             this.btnEnableAll.TabIndex = 3;
             this.btnEnableAll.Text = "Enable All";
             this.btnEnableAll.UseVisualStyleBackColor = true;
@@ -197,9 +198,9 @@
             // 
             this.btnOpenModFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpenModFolder.Image = global::HacknetModManager.Properties.Resources.folder_go;
-            this.btnOpenModFolder.Location = new System.Drawing.Point(151, 3);
+            this.btnOpenModFolder.Location = new System.Drawing.Point(150, 3);
             this.btnOpenModFolder.Name = "btnOpenModFolder";
-            this.btnOpenModFolder.Size = new System.Drawing.Size(31, 25);
+            this.btnOpenModFolder.Size = new System.Drawing.Size(32, 25);
             this.btnOpenModFolder.TabIndex = 5;
             this.btnOpenModFolder.UseVisualStyleBackColor = true;
             this.btnOpenModFolder.Click += new System.EventHandler(this.btnOpenModFolder_Click);
@@ -211,39 +212,23 @@
             this.tlpSide.ColumnCount = 1;
             this.tlpSide.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpSide.Controls.Add(this.btnHomepage, 0, 0);
-            this.tlpSide.Controls.Add(this.btnCreateMod, 0, 3);
-            this.tlpSide.Controls.Add(this.btnEditMod, 0, 2);
-            this.tlpSide.Controls.Add(this.btnUpdate, 0, 1);
-            this.tlpSide.Location = new System.Drawing.Point(209, 81);
+            this.tlpSide.Controls.Add(this.btnCreateMod, 0, 6);
+            this.tlpSide.Controls.Add(this.btnEditMod, 0, 5);
+            this.tlpSide.Controls.Add(this.btnUpdate, 0, 2);
+            this.tlpSide.Controls.Add(this.btnChooseRelease, 0, 3);
+            this.tlpSide.Location = new System.Drawing.Point(209, 12);
             this.tlpSide.Name = "tlpSide";
-            this.tlpSide.RowCount = 5;
+            this.tlpSide.RowCount = 8;
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpSide.Size = new System.Drawing.Size(109, 125);
+            this.tlpSide.Size = new System.Drawing.Size(109, 324);
             this.tlpSide.TabIndex = 7;
-            // 
-            // btnCreateMod
-            // 
-            this.btnCreateMod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCreateMod.Location = new System.Drawing.Point(3, 96);
-            this.btnCreateMod.Name = "btnCreateMod";
-            this.btnCreateMod.Size = new System.Drawing.Size(103, 25);
-            this.btnCreateMod.TabIndex = 2;
-            this.btnCreateMod.Text = "Create";
-            this.btnCreateMod.UseVisualStyleBackColor = true;
-            // 
-            // btnEditMod
-            // 
-            this.btnEditMod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEditMod.Location = new System.Drawing.Point(3, 65);
-            this.btnEditMod.Name = "btnEditMod";
-            this.btnEditMod.Size = new System.Drawing.Size(103, 25);
-            this.btnEditMod.TabIndex = 3;
-            this.btnEditMod.Text = "Edit";
-            this.btnEditMod.UseVisualStyleBackColor = true;
             // 
             // btnHomepage
             // 
@@ -256,27 +241,58 @@
             this.btnHomepage.UseVisualStyleBackColor = true;
             this.btnHomepage.Click += new System.EventHandler(this.btnHomepage_Click);
             // 
+            // btnCreateMod
+            // 
+            this.btnCreateMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCreateMod.Location = new System.Drawing.Point(3, 189);
+            this.btnCreateMod.Name = "btnCreateMod";
+            this.btnCreateMod.Size = new System.Drawing.Size(103, 25);
+            this.btnCreateMod.TabIndex = 2;
+            this.btnCreateMod.Text = "Create";
+            this.btnCreateMod.UseVisualStyleBackColor = true;
+            // 
+            // btnEditMod
+            // 
+            this.btnEditMod.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEditMod.Location = new System.Drawing.Point(3, 158);
+            this.btnEditMod.Name = "btnEditMod";
+            this.btnEditMod.Size = new System.Drawing.Size(103, 25);
+            this.btnEditMod.TabIndex = 3;
+            this.btnEditMod.Text = "Edit";
+            this.btnEditMod.UseVisualStyleBackColor = true;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdate.Location = new System.Drawing.Point(3, 65);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(103, 25);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // txtInfo
             // 
             this.txtInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtInfo.Location = new System.Drawing.Point(3, 81);
+            this.txtInfo.Location = new System.Drawing.Point(3, 88);
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
-            this.txtInfo.Size = new System.Drawing.Size(200, 125);
+            this.txtInfo.Size = new System.Drawing.Size(200, 248);
             this.txtInfo.TabIndex = 6;
             this.txtInfo.Text = "No information.";
             // 
             // lblAuthors
             // 
+            this.lblAuthors.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAuthors.AutoEllipsis = true;
-            this.lblAuthors.AutoSize = true;
-            this.lblAuthors.Location = new System.Drawing.Point(3, 52);
-            this.lblAuthors.MaximumSize = new System.Drawing.Size(0, 28);
+            this.lblAuthors.Location = new System.Drawing.Point(3, 57);
             this.lblAuthors.Name = "lblAuthors";
-            this.lblAuthors.Size = new System.Drawing.Size(27, 13);
+            this.lblAuthors.Size = new System.Drawing.Size(200, 28);
             this.lblAuthors.TabIndex = 5;
             this.lblAuthors.Text = "N/A";
             // 
@@ -285,23 +301,21 @@
             this.lblDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDescription.AutoEllipsis = true;
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Location = new System.Drawing.Point(3, 26);
-            this.lblDescription.MaximumSize = new System.Drawing.Size(0, 28);
+            this.lblDescription.Location = new System.Drawing.Point(3, 29);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(27, 13);
+            this.lblDescription.Size = new System.Drawing.Size(200, 28);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "N/A";
             // 
             // lblTitleVersion
             // 
+            this.lblTitleVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitleVersion.AutoEllipsis = true;
-            this.lblTitleVersion.AutoSize = true;
             this.lblTitleVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleVersion.Location = new System.Drawing.Point(3, 9);
-            this.lblTitleVersion.MaximumSize = new System.Drawing.Size(0, 17);
+            this.lblTitleVersion.Location = new System.Drawing.Point(3, 12);
             this.lblTitleVersion.Name = "lblTitleVersion";
-            this.lblTitleVersion.Size = new System.Drawing.Size(31, 17);
+            this.lblTitleVersion.Size = new System.Drawing.Size(200, 17);
             this.lblTitleVersion.TabIndex = 3;
             this.lblTitleVersion.Text = "N/A";
             // 
@@ -315,7 +329,7 @@
             this.tlpPlay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpPlay.Controls.Add(this.btnPlayUnmodded, 0, 0);
             this.tlpPlay.Controls.Add(this.btnPlayPathfinder, 1, 0);
-            this.tlpPlay.Location = new System.Drawing.Point(3, 212);
+            this.tlpPlay.Location = new System.Drawing.Point(3, 342);
             this.tlpPlay.Name = "tlpPlay";
             this.tlpPlay.RowCount = 1;
             this.tlpPlay.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -344,22 +358,11 @@
             this.btnPlayPathfinder.UseVisualStyleBackColor = true;
             this.btnPlayPathfinder.Click += new System.EventHandler(this.btnPlayPathfinder_Click);
             // 
-            // btnUpdate
-            // 
-            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnUpdate.Location = new System.Drawing.Point(3, 34);
-            this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(103, 25);
-            this.btnUpdate.TabIndex = 5;
-            this.btnUpdate.Text = "Update";
-            this.btnUpdate.UseVisualStyleBackColor = true;
-            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
-            // 
             // status
             // 
             this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.status.Location = new System.Drawing.Point(0, 249);
+            this.status.Location = new System.Drawing.Point(0, 379);
             this.status.Name = "status";
             this.status.Size = new System.Drawing.Size(534, 22);
             this.status.TabIndex = 4;
@@ -371,11 +374,20 @@
             this.lblStatus.Size = new System.Drawing.Size(39, 17);
             this.lblStatus.Text = "Ready";
             // 
+            // btnChooseRelease
+            // 
+            this.btnChooseRelease.Location = new System.Drawing.Point(3, 96);
+            this.btnChooseRelease.Name = "btnChooseRelease";
+            this.btnChooseRelease.Size = new System.Drawing.Size(103, 23);
+            this.btnChooseRelease.TabIndex = 6;
+            this.btnChooseRelease.Text = "Choose Release";
+            this.btnChooseRelease.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(534, 271);
+            this.ClientSize = new System.Drawing.Size(534, 401);
             this.Controls.Add(this.status);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(440, 310);
@@ -384,7 +396,6 @@
             this.Text = "Hacknet Mod Manager";
             this.Activated += new System.EventHandler(this.frmMain_Activated);
             this.Load += new System.EventHandler(this.frmMain_Load);
-            this.Resize += new System.EventHandler(this.frmMain_Resize);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.Panel2.PerformLayout();
@@ -426,6 +437,7 @@
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
+        private System.Windows.Forms.Button btnChooseRelease;
     }
 }
 

@@ -30,7 +30,6 @@ namespace HacknetModManager {
 
             InitializeFolders();
             LoadMods();
-            ResizeLabels();
         }
 
         private void frmMain_Activated(object sender, EventArgs e) {
@@ -44,10 +43,6 @@ namespace HacknetModManager {
 
         private void btnPlayUnmodded_Click(object sender, EventArgs e) {
             Process.Start("steam://rungameid/365450");
-        }
-
-        private void frmMain_Resize(object sender, EventArgs e) {
-            ResizeLabels();
         }
 
         private void btnRefresh_Click(object sender, EventArgs e) {
@@ -69,6 +64,7 @@ namespace HacknetModManager {
         private void btnInstall_Click(object sender, EventArgs e) {
             frmInstall form = new frmInstall();
             form.ShowDialog();
+            LoadMods();
         }
 
         private void btnRemove_Click(object sender, EventArgs e) {
@@ -81,26 +77,44 @@ namespace HacknetModManager {
             }
         }
 
-        private void listMods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
-            Mod mod = Mods[e.Item.Text];
-
-            if(!string.IsNullOrWhiteSpace(mod.Title)) {
-                lblTitleVersion.Text = mod.Title;
-
-                if(!string.IsNullOrWhiteSpace(mod.Version)) {
-                    lblTitleVersion.Text += " " + mod.Version;
-                }
+        private void btnHomepage_Click(object sender, EventArgs e) {
+            if(listMods.SelectedItems.Count == 1) {
+                Process.Start(Mods[listMods.SelectedItems[0].Text].Homepage);
             }
-            else lblTitleVersion.Text = "N/A";
-
-            lblDescription.Text = (string.IsNullOrWhiteSpace(mod.Description) ? "N/A" : mod.Description);
-            lblAuthors.Text = (mod.Authors.Length == 0 ? "N/A" : string.Join(", ", mod.Authors));
         }
 
-        private void ResizeLabels() {
-            lblDescription.ConstrainMaximumWidthToParent(lblDescription.Margin.Right * 4);
-            lblAuthors.ConstrainMaximumWidthToParent(lblAuthors.Margin.Right * 4);
-            lblTitleVersion.ConstrainMaximumWidthToParent(lblTitleVersion.Margin.Right * 4);
+        private void btnUpdate_Click(object sender, EventArgs e) {
+            foreach(ListViewItem item in listMods.SelectedItems) {
+                Mod mod = Mods[item.Text];
+                mod.Update(Client, ModsFolder, DownloadsFolder, ExtractFolder, async: true);
+            }
+        }
+
+        private void listMods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
+            if(listMods.SelectedItems.Count == 1) {
+                Mod mod = Mods[e.Item.Text];
+
+                if(!string.IsNullOrWhiteSpace(mod.Title)) {
+                    lblTitleVersion.Text = mod.Title;
+
+                    if(!string.IsNullOrWhiteSpace(mod.Version)) {
+                        lblTitleVersion.Text += " " + mod.Version;
+                    }
+                }
+                else lblTitleVersion.Text = mod.Name;
+                
+                btnHomepage.Enabled = !string.IsNullOrWhiteSpace(mod.Homepage);
+                lblDescription.Text = (string.IsNullOrWhiteSpace(mod.Description) ? "N/A" : mod.Description);
+                lblAuthors.Text = (mod.Authors.Length == 0 ? "N/A" : string.Join(", ", mod.Authors));
+                txtInfo.Text = (string.IsNullOrWhiteSpace(mod.Info) ? "No information." : mod.Info);
+            }
+            else {
+                btnHomepage.Enabled = false;
+                lblTitleVersion.Text = "N/A";
+                lblDescription.Text = "N/A";
+                lblAuthors.Text = "N/A";
+                txtInfo.Text = "No information.";
+            }
         }
 
         private bool CheckForHacknet() {
@@ -124,7 +138,10 @@ namespace HacknetModManager {
         }
 
         private void LoadMods() {
-            if(Mods.Count > 0) Mods.Clear();
+            if(Mods.Count > 0) {
+                Mods.Clear();
+                listMods.Items.Clear();
+            }
 
             var dlls = Directory.GetFiles(ModsFolder, "*.dll", SearchOption.TopDirectoryOnly);
             var jsons = Directory.GetFiles(ModsFolder, "*.json", SearchOption.TopDirectoryOnly);
