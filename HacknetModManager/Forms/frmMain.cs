@@ -178,9 +178,8 @@ namespace HacknetModManager {
             }
             else lblTitleVersion.Text = mod.Name;
 
-            btnHomepage.Enabled =
-                btnUpdate.Enabled =
-                btnChooseRelease.Enabled = !string.IsNullOrWhiteSpace(mod.Homepage);
+            btnHomepage.Enabled = !string.IsNullOrWhiteSpace(mod.Homepage);
+            btnUpdate.Enabled = btnChooseRelease.Enabled = !string.IsNullOrWhiteSpace(mod.Repository);
             lblDescription.Text = (string.IsNullOrWhiteSpace(mod.Description) ? "N/A" : mod.Description);
             lblAuthors.Text = (mod.Authors.Length == 0 ? "N/A" : string.Join(", ", mod.Authors));
             txtInfo.Text = (string.IsNullOrWhiteSpace(mod.Info) ? "No information." : mod.Info);
