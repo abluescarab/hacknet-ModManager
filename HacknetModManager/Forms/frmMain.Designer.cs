@@ -176,7 +176,7 @@
             this.lblAuthors.ForeColor = System.Drawing.Color.White;
             this.lblAuthors.Location = new System.Drawing.Point(3, 57);
             this.lblAuthors.Name = "lblAuthors";
-            this.lblAuthors.Size = new System.Drawing.Size(287, 28);
+            this.lblAuthors.Size = new System.Drawing.Size(269, 28);
             this.lblAuthors.TabIndex = 5;
             this.lblAuthors.Text = "N/A";
             // 
@@ -188,7 +188,7 @@
             this.lblDescription.ForeColor = System.Drawing.Color.White;
             this.lblDescription.Location = new System.Drawing.Point(3, 29);
             this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(287, 28);
+            this.lblDescription.Size = new System.Drawing.Size(269, 28);
             this.lblDescription.TabIndex = 4;
             this.lblDescription.Text = "N/A";
             // 
@@ -201,7 +201,7 @@
             this.lblTitleVersion.ForeColor = System.Drawing.Color.White;
             this.lblTitleVersion.Location = new System.Drawing.Point(3, 12);
             this.lblTitleVersion.Name = "lblTitleVersion";
-            this.lblTitleVersion.Size = new System.Drawing.Size(287, 17);
+            this.lblTitleVersion.Size = new System.Drawing.Size(269, 17);
             this.lblTitleVersion.TabIndex = 3;
             this.lblTitleVersion.Text = "N/A";
             // 
