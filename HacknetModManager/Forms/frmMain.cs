@@ -102,9 +102,13 @@ namespace HacknetModManager {
 
         private void btnEditModInfo_Click(object sender, EventArgs e) {
             frmEdit form = new frmEdit();
-            form.ShowDialog(Mods[listMods.SelectedItems[0].Text]);
+            Mod mod = Mods[listMods.SelectedItems[0].Text];
+
+            if(form.ShowDialog(mod) == DialogResult.OK) {
+                LoadMod(mod);
+            }
+
             // todo: write info file
-            //LoadMods();
         }
 
         private void btnUpdateModManager_Click(object sender, EventArgs e) {
