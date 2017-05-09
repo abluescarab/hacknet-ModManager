@@ -30,6 +30,11 @@ namespace HacknetModManager {
 
             InitializeFolders();
             LoadMods();
+
+            if(Mods.Count > 0) {
+                listMods.Items[0].Selected = true;
+                
+            }
         }
 
         private void frmMain_Activated(object sender, EventArgs e) {
@@ -93,20 +98,7 @@ namespace HacknetModManager {
         private void listMods_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e) {
             if(listMods.SelectedItems.Count == 1) {
                 Mod mod = Mods[e.Item.Text];
-
-                if(!string.IsNullOrWhiteSpace(mod.Title)) {
-                    lblTitleVersion.Text = mod.Title;
-
-                    if(!string.IsNullOrWhiteSpace(mod.Version)) {
-                        lblTitleVersion.Text += " " + mod.Version;
-                    }
-                }
-                else lblTitleVersion.Text = mod.Name;
-                
-                btnHomepage.Enabled = !string.IsNullOrWhiteSpace(mod.Homepage);
-                lblDescription.Text = (string.IsNullOrWhiteSpace(mod.Description) ? "N/A" : mod.Description);
-                lblAuthors.Text = (mod.Authors.Length == 0 ? "N/A" : string.Join(", ", mod.Authors));
-                txtInfo.Text = (string.IsNullOrWhiteSpace(mod.Info) ? "No information." : mod.Info);
+                LoadMod(mod);
             }
             else {
                 btnHomepage.Enabled = false;
@@ -135,6 +127,22 @@ namespace HacknetModManager {
             FileUtils.CreateFolder(ModsFolder);
             FileUtils.CreateFolder(DownloadsFolder);
             FileUtils.CreateFolder(ExtractFolder);
+        }
+
+        private void LoadMod(Mod mod) {
+            if(!string.IsNullOrWhiteSpace(mod.Title)) {
+                lblTitleVersion.Text = mod.Title;
+
+                if(!string.IsNullOrWhiteSpace(mod.Version)) {
+                    lblTitleVersion.Text += " " + mod.Version;
+                }
+            }
+            else lblTitleVersion.Text = mod.Name;
+
+            btnHomepage.Enabled = !string.IsNullOrWhiteSpace(mod.Homepage);
+            lblDescription.Text = (string.IsNullOrWhiteSpace(mod.Description) ? "N/A" : mod.Description);
+            lblAuthors.Text = (mod.Authors.Length == 0 ? "N/A" : string.Join(", ", mod.Authors));
+            txtInfo.Text = (string.IsNullOrWhiteSpace(mod.Info) ? "No information." : mod.Info);
         }
 
         private void LoadMods() {
