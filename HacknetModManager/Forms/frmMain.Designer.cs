@@ -37,13 +37,14 @@
             this.btnCreateMod = new System.Windows.Forms.Button();
             this.btnEditMod = new System.Windows.Forms.Button();
             this.btnHomepage = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtInfo = new System.Windows.Forms.TextBox();
             this.lblAuthors = new System.Windows.Forms.Label();
             this.lblDescription = new System.Windows.Forms.Label();
             this.lblTitleVersion = new System.Windows.Forms.Label();
             this.tlpPlay = new System.Windows.Forms.TableLayoutPanel();
             this.btnPlayUnmodded = new System.Windows.Forms.Button();
             this.btnPlayPathfinder = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -70,7 +71,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tlpSide);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.txtInfo);
             this.splitContainer1.Panel2.Controls.Add(this.lblAuthors);
             this.splitContainer1.Panel2.Controls.Add(this.lblDescription);
             this.splitContainer1.Panel2.Controls.Add(this.lblTitleVersion);
@@ -151,7 +152,7 @@
             this.tlpTop.ColumnCount = 3;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.00001F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 36F));
             this.tlpTop.Controls.Add(this.btnDisableAll, 1, 0);
             this.tlpTop.Controls.Add(this.btnEnableAll, 0, 0);
             this.tlpTop.Controls.Add(this.btnOpenModFolder, 2, 0);
@@ -165,9 +166,9 @@
             // btnDisableAll
             // 
             this.btnDisableAll.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnDisableAll.Location = new System.Drawing.Point(78, 3);
+            this.btnDisableAll.Location = new System.Drawing.Point(77, 3);
             this.btnDisableAll.Name = "btnDisableAll";
-            this.btnDisableAll.Size = new System.Drawing.Size(69, 25);
+            this.btnDisableAll.Size = new System.Drawing.Size(68, 25);
             this.btnDisableAll.TabIndex = 4;
             this.btnDisableAll.Text = "Disable All";
             this.btnDisableAll.UseVisualStyleBackColor = true;
@@ -178,7 +179,7 @@
             this.btnEnableAll.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEnableAll.Location = new System.Drawing.Point(3, 3);
             this.btnEnableAll.Name = "btnEnableAll";
-            this.btnEnableAll.Size = new System.Drawing.Size(69, 25);
+            this.btnEnableAll.Size = new System.Drawing.Size(68, 25);
             this.btnEnableAll.TabIndex = 3;
             this.btnEnableAll.Text = "Enable All";
             this.btnEnableAll.UseVisualStyleBackColor = true;
@@ -188,9 +189,9 @@
             // 
             this.btnOpenModFolder.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnOpenModFolder.Image = global::HacknetModManager.Properties.Resources.folder_go;
-            this.btnOpenModFolder.Location = new System.Drawing.Point(153, 3);
+            this.btnOpenModFolder.Location = new System.Drawing.Point(151, 3);
             this.btnOpenModFolder.Name = "btnOpenModFolder";
-            this.btnOpenModFolder.Size = new System.Drawing.Size(29, 25);
+            this.btnOpenModFolder.Size = new System.Drawing.Size(31, 25);
             this.btnOpenModFolder.TabIndex = 5;
             this.btnOpenModFolder.UseVisualStyleBackColor = true;
             this.btnOpenModFolder.Click += new System.EventHandler(this.btnOpenModFolder_Click);
@@ -200,22 +201,25 @@
             this.tlpSide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpSide.ColumnCount = 1;
             this.tlpSide.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpSide.Controls.Add(this.btnCreateMod, 0, 1);
-            this.tlpSide.Controls.Add(this.btnEditMod, 0, 2);
             this.tlpSide.Controls.Add(this.btnHomepage, 0, 0);
+            this.tlpSide.Controls.Add(this.btnCreateMod, 0, 3);
+            this.tlpSide.Controls.Add(this.btnEditMod, 0, 2);
+            this.tlpSide.Controls.Add(this.btnUpdate, 0, 1);
             this.tlpSide.Location = new System.Drawing.Point(209, 81);
             this.tlpSide.Name = "tlpSide";
-            this.tlpSide.RowCount = 3;
-            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.tlpSide.Size = new System.Drawing.Size(115, 94);
+            this.tlpSide.RowCount = 5;
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tlpSide.Size = new System.Drawing.Size(115, 261);
             this.tlpSide.TabIndex = 7;
             // 
             // btnCreateMod
             // 
             this.btnCreateMod.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnCreateMod.Location = new System.Drawing.Point(3, 34);
+            this.btnCreateMod.Location = new System.Drawing.Point(3, 96);
             this.btnCreateMod.Name = "btnCreateMod";
             this.btnCreateMod.Size = new System.Drawing.Size(109, 25);
             this.btnCreateMod.TabIndex = 2;
@@ -227,7 +231,7 @@
             this.btnEditMod.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEditMod.Location = new System.Drawing.Point(3, 65);
             this.btnEditMod.Name = "btnEditMod";
-            this.btnEditMod.Size = new System.Drawing.Size(109, 26);
+            this.btnEditMod.Size = new System.Drawing.Size(109, 25);
             this.btnEditMod.TabIndex = 3;
             this.btnEditMod.Text = "Edit";
             this.btnEditMod.UseVisualStyleBackColor = true;
@@ -241,19 +245,20 @@
             this.btnHomepage.TabIndex = 4;
             this.btnHomepage.Text = "Visit Homepage";
             this.btnHomepage.UseVisualStyleBackColor = true;
+            this.btnHomepage.Click += new System.EventHandler(this.btnHomepage_Click);
             // 
-            // textBox1
+            // txtInfo
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txtInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(3, 81);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(200, 261);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "No information.";
+            this.txtInfo.Location = new System.Drawing.Point(3, 81);
+            this.txtInfo.Multiline = true;
+            this.txtInfo.Name = "txtInfo";
+            this.txtInfo.ReadOnly = true;
+            this.txtInfo.Size = new System.Drawing.Size(200, 261);
+            this.txtInfo.TabIndex = 6;
+            this.txtInfo.Text = "No information.";
             // 
             // lblAuthors
             // 
@@ -330,6 +335,16 @@
             this.btnPlayPathfinder.UseVisualStyleBackColor = true;
             this.btnPlayPathfinder.Click += new System.EventHandler(this.btnPlayPathfinder_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnUpdate.Location = new System.Drawing.Point(3, 34);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(109, 25);
+            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -373,11 +388,12 @@
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Button btnCreateMod;
         private System.Windows.Forms.Label lblAuthors;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtInfo;
         private System.Windows.Forms.TableLayoutPanel tlpSide;
         private System.Windows.Forms.Button btnEditMod;
         private System.Windows.Forms.Button btnHomepage;
         private System.Windows.Forms.ListView listMods;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 
