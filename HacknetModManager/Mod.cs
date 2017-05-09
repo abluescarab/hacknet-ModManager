@@ -47,9 +47,6 @@ namespace HacknetModManager {
             Match match;
 
             if(IsValid(client, Repository, out match)) {
-                string user = match.Groups[1].Value;
-                string repo = match.Groups[2].Value;
-                
                 //if(async) {
                 //    DownloadAsync(client, release, user, repo, modsFolder, downloadFolder, extractFolder);
                 //}
