@@ -212,7 +212,7 @@ namespace HacknetModManager {
         }
 
         public static bool IsValid(GitHubClient client, string repository, out Match match) {
-            match = Regex.Match(repository, ".*github.com/(.*)/(.*)");
+            match = Regex.Match(repository, @".*github\.com\/(.*?)\/(.*)");
 
             if(client != null && !string.IsNullOrWhiteSpace(repository) && match.Success) {
                 try {
