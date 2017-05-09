@@ -103,7 +103,7 @@
             this.tlpBottom.RowCount = 1;
             this.tlpBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpBottom.Size = new System.Drawing.Size(185, 31);
-            this.tlpBottom.TabIndex = 6;
+            this.tlpBottom.TabIndex = 5;
             // 
             // tlpTop
             // 
@@ -112,7 +112,7 @@
             this.tlpTop.ColumnCount = 3;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.99999F));
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
             this.tlpTop.Controls.Add(this.btnDisableAll, 1, 0);
             this.tlpTop.Controls.Add(this.btnEnableAll, 0, 0);
             this.tlpTop.Controls.Add(this.btnOpenModFolder, 2, 0);
@@ -147,7 +147,7 @@
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpSide.Size = new System.Drawing.Size(127, 280);
-            this.tlpSide.TabIndex = 7;
+            this.tlpSide.TabIndex = 10;
             // 
             // txtInfo
             // 
@@ -162,7 +162,7 @@
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
             this.txtInfo.Size = new System.Drawing.Size(265, 204);
-            this.txtInfo.TabIndex = 6;
+            this.txtInfo.TabIndex = 9;
             this.txtInfo.Text = "No information.";
             // 
             // lblAuthors
@@ -217,7 +217,7 @@
             this.tlpPlay.RowCount = 1;
             this.tlpPlay.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpPlay.Size = new System.Drawing.Size(398, 31);
-            this.tlpPlay.TabIndex = 2;
+            this.tlpPlay.TabIndex = 16;
             // 
             // status
             // 
@@ -253,7 +253,7 @@
             this.listMods.ShowGroups = false;
             this.listMods.Size = new System.Drawing.Size(185, 242);
             this.listMods.Sorting = System.Windows.Forms.SortOrder.Ascending;
-            this.listMods.TabIndex = 7;
+            this.listMods.TabIndex = 4;
             this.listMods.UseCompatibleStateImageBehavior = false;
             this.listMods.View = System.Windows.Forms.View.List;
             this.listMods.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.listMods_ItemChecked);
@@ -269,7 +269,7 @@
             this.btnRemove.Location = new System.Drawing.Point(80, 3);
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(71, 25);
-            this.btnRemove.TabIndex = 4;
+            this.btnRemove.TabIndex = 7;
             this.btnRemove.Text = "Remove";
             this.btnRemove.UseVisualStyleBackColor = false;
             this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
@@ -284,7 +284,7 @@
             this.btnInstall.Location = new System.Drawing.Point(3, 3);
             this.btnInstall.Name = "btnInstall";
             this.btnInstall.Size = new System.Drawing.Size(71, 25);
-            this.btnInstall.TabIndex = 3;
+            this.btnInstall.TabIndex = 6;
             this.btnInstall.Text = "Install";
             this.btnInstall.UseVisualStyleBackColor = false;
             this.btnInstall.Click += new System.EventHandler(this.btnInstall_Click);
@@ -300,7 +300,7 @@
             this.btnRefresh.Location = new System.Drawing.Point(157, 3);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(25, 25);
-            this.btnRefresh.TabIndex = 5;
+            this.btnRefresh.TabIndex = 8;
             this.btnRefresh.UseVisualStyleBackColor = false;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
@@ -311,10 +311,10 @@
             this.btnDisableAll.FlatAppearance.BorderSize = 0;
             this.btnDisableAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisableAll.ForeColor = System.Drawing.Color.White;
-            this.btnDisableAll.Location = new System.Drawing.Point(79, 3);
+            this.btnDisableAll.Location = new System.Drawing.Point(78, 3);
             this.btnDisableAll.Name = "btnDisableAll";
-            this.btnDisableAll.Size = new System.Drawing.Size(71, 25);
-            this.btnDisableAll.TabIndex = 4;
+            this.btnDisableAll.Size = new System.Drawing.Size(69, 25);
+            this.btnDisableAll.TabIndex = 2;
             this.btnDisableAll.Text = "Disable All";
             this.btnDisableAll.UseVisualStyleBackColor = false;
             this.btnDisableAll.Click += new System.EventHandler(this.btnDisableAll_Click);
@@ -328,8 +328,8 @@
             this.btnEnableAll.ForeColor = System.Drawing.Color.White;
             this.btnEnableAll.Location = new System.Drawing.Point(3, 3);
             this.btnEnableAll.Name = "btnEnableAll";
-            this.btnEnableAll.Size = new System.Drawing.Size(70, 25);
-            this.btnEnableAll.TabIndex = 3;
+            this.btnEnableAll.Size = new System.Drawing.Size(69, 25);
+            this.btnEnableAll.TabIndex = 1;
             this.btnEnableAll.Text = "Enable All";
             this.btnEnableAll.UseVisualStyleBackColor = false;
             this.btnEnableAll.Click += new System.EventHandler(this.btnEnableAll_Click);
@@ -342,10 +342,10 @@
             this.btnOpenModFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenModFolder.ForeColor = System.Drawing.Color.White;
             this.btnOpenModFolder.Image = global::HacknetModManager.Properties.Resources.folder_go;
-            this.btnOpenModFolder.Location = new System.Drawing.Point(156, 3);
+            this.btnOpenModFolder.Location = new System.Drawing.Point(153, 3);
             this.btnOpenModFolder.Name = "btnOpenModFolder";
-            this.btnOpenModFolder.Size = new System.Drawing.Size(26, 25);
-            this.btnOpenModFolder.TabIndex = 5;
+            this.btnOpenModFolder.Size = new System.Drawing.Size(29, 25);
+            this.btnOpenModFolder.TabIndex = 3;
             this.btnOpenModFolder.UseVisualStyleBackColor = false;
             this.btnOpenModFolder.Click += new System.EventHandler(this.btnOpenModFolder_Click);
             // 
@@ -359,7 +359,7 @@
             this.btnHomepage.Location = new System.Drawing.Point(3, 3);
             this.btnHomepage.Name = "btnHomepage";
             this.btnHomepage.Size = new System.Drawing.Size(121, 25);
-            this.btnHomepage.TabIndex = 4;
+            this.btnHomepage.TabIndex = 11;
             this.btnHomepage.Text = "Visit Homepage";
             this.btnHomepage.UseVisualStyleBackColor = false;
             this.btnHomepage.Click += new System.EventHandler(this.btnHomepage_Click);
@@ -374,7 +374,7 @@
             this.btnEditModInfo.Location = new System.Drawing.Point(3, 106);
             this.btnEditModInfo.Name = "btnEditModInfo";
             this.btnEditModInfo.Size = new System.Drawing.Size(121, 25);
-            this.btnEditModInfo.TabIndex = 3;
+            this.btnEditModInfo.TabIndex = 14;
             this.btnEditModInfo.Text = "Edit Mod Info";
             this.btnEditModInfo.UseVisualStyleBackColor = false;
             // 
@@ -388,7 +388,7 @@
             this.btnUpdate.Location = new System.Drawing.Point(3, 44);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(121, 25);
-            this.btnUpdate.TabIndex = 5;
+            this.btnUpdate.TabIndex = 12;
             this.btnUpdate.Text = "Update Mod";
             this.btnUpdate.UseVisualStyleBackColor = false;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -403,7 +403,7 @@
             this.btnChooseRelease.Location = new System.Drawing.Point(3, 75);
             this.btnChooseRelease.Name = "btnChooseRelease";
             this.btnChooseRelease.Size = new System.Drawing.Size(121, 25);
-            this.btnChooseRelease.TabIndex = 6;
+            this.btnChooseRelease.TabIndex = 13;
             this.btnChooseRelease.Text = "Choose Release";
             this.btnChooseRelease.UseVisualStyleBackColor = false;
             this.btnChooseRelease.Click += new System.EventHandler(this.btnChooseRelease_Click);
@@ -421,7 +421,7 @@
             this.btnUpdateModManager.Location = new System.Drawing.Point(3, 147);
             this.btnUpdateModManager.Name = "btnUpdateModManager";
             this.btnUpdateModManager.Size = new System.Drawing.Size(121, 25);
-            this.btnUpdateModManager.TabIndex = 7;
+            this.btnUpdateModManager.TabIndex = 15;
             this.btnUpdateModManager.Text = "Check for Updates";
             this.btnUpdateModManager.UseVisualStyleBackColor = false;
             // 
@@ -435,7 +435,7 @@
             this.btnPlayUnmodded.Location = new System.Drawing.Point(3, 3);
             this.btnPlayUnmodded.Name = "btnPlayUnmodded";
             this.btnPlayUnmodded.Size = new System.Drawing.Size(193, 25);
-            this.btnPlayUnmodded.TabIndex = 1;
+            this.btnPlayUnmodded.TabIndex = 17;
             this.btnPlayUnmodded.Text = "Play (Unmodded)";
             this.btnPlayUnmodded.UseVisualStyleBackColor = false;
             this.btnPlayUnmodded.Click += new System.EventHandler(this.btnPlayUnmodded_Click);
@@ -450,7 +450,7 @@
             this.btnPlayPathfinder.Location = new System.Drawing.Point(202, 3);
             this.btnPlayPathfinder.Name = "btnPlayPathfinder";
             this.btnPlayPathfinder.Size = new System.Drawing.Size(193, 25);
-            this.btnPlayPathfinder.TabIndex = 0;
+            this.btnPlayPathfinder.TabIndex = 18;
             this.btnPlayPathfinder.Text = "Play (Pathfinder)";
             this.btnPlayPathfinder.UseVisualStyleBackColor = false;
             this.btnPlayPathfinder.Click += new System.EventHandler(this.btnPlayPathfinder_Click);
