@@ -7,7 +7,7 @@ namespace HacknetModManager.Controls {
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
             FlatAppearance.BorderColor = DarkTheme.Transparent;
-            FlatAppearance.MouseDownBackColor = DarkTheme.DarkDarkBackColor;
+            FlatAppearance.MouseDownBackColor = DarkTheme.LightBackColor;
             FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
             BackColor = DarkTheme.DarkBackColor;
             ForeColor = DarkTheme.TextColor;
