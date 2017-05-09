@@ -112,7 +112,7 @@
             this.tlpTop.ColumnCount = 3;
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.99999F));
             this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34F));
+            this.tlpTop.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 38F));
             this.tlpTop.Controls.Add(this.btnDisableAll, 1, 0);
             this.tlpTop.Controls.Add(this.btnEnableAll, 0, 0);
             this.tlpTop.Controls.Add(this.btnOpenModFolder, 2, 0);
@@ -311,9 +311,9 @@
             this.btnDisableAll.FlatAppearance.BorderSize = 0;
             this.btnDisableAll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDisableAll.ForeColor = System.Drawing.Color.White;
-            this.btnDisableAll.Location = new System.Drawing.Point(78, 3);
+            this.btnDisableAll.Location = new System.Drawing.Point(76, 3);
             this.btnDisableAll.Name = "btnDisableAll";
-            this.btnDisableAll.Size = new System.Drawing.Size(69, 25);
+            this.btnDisableAll.Size = new System.Drawing.Size(67, 25);
             this.btnDisableAll.TabIndex = 2;
             this.btnDisableAll.Text = "Disable All";
             this.btnDisableAll.UseVisualStyleBackColor = false;
@@ -328,7 +328,7 @@
             this.btnEnableAll.ForeColor = System.Drawing.Color.White;
             this.btnEnableAll.Location = new System.Drawing.Point(3, 3);
             this.btnEnableAll.Name = "btnEnableAll";
-            this.btnEnableAll.Size = new System.Drawing.Size(69, 25);
+            this.btnEnableAll.Size = new System.Drawing.Size(67, 25);
             this.btnEnableAll.TabIndex = 1;
             this.btnEnableAll.Text = "Enable All";
             this.btnEnableAll.UseVisualStyleBackColor = false;
@@ -342,9 +342,9 @@
             this.btnOpenModFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOpenModFolder.ForeColor = System.Drawing.Color.White;
             this.btnOpenModFolder.Image = global::HacknetModManager.Properties.Resources.folder_go;
-            this.btnOpenModFolder.Location = new System.Drawing.Point(153, 3);
+            this.btnOpenModFolder.Location = new System.Drawing.Point(149, 3);
             this.btnOpenModFolder.Name = "btnOpenModFolder";
-            this.btnOpenModFolder.Size = new System.Drawing.Size(29, 25);
+            this.btnOpenModFolder.Size = new System.Drawing.Size(33, 25);
             this.btnOpenModFolder.TabIndex = 3;
             this.btnOpenModFolder.UseVisualStyleBackColor = false;
             this.btnOpenModFolder.Click += new System.EventHandler(this.btnOpenModFolder_Click);
@@ -377,6 +377,7 @@
             this.btnEditModInfo.TabIndex = 14;
             this.btnEditModInfo.Text = "Edit Mod Info";
             this.btnEditModInfo.UseVisualStyleBackColor = false;
+            this.btnEditModInfo.Click += new System.EventHandler(this.btnEditModInfo_Click);
             // 
             // btnUpdate
             // 
@@ -424,6 +425,7 @@
             this.btnUpdateModManager.TabIndex = 15;
             this.btnUpdateModManager.Text = "Check for Updates";
             this.btnUpdateModManager.UseVisualStyleBackColor = false;
+            this.btnUpdateModManager.Click += new System.EventHandler(this.btnUpdateModManager_Click);
             // 
             // btnPlayUnmodded
             // 
