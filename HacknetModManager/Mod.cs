@@ -78,11 +78,6 @@ namespace HacknetModManager {
             using(StreamWriter writer = new StreamWriter(stream)) {
                 writer.Write(json);
             }
-            
-            //Mod jsonMod = JsonConvert.DeserializeObject<Mod>(File.ReadAllText(file));
-            //jsonMod.Name = name;
-
-            //return jsonMod;
         }
         
         public void Remove() {
