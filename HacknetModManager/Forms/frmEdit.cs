@@ -82,7 +82,8 @@ namespace HacknetModManager {
         }
 
         private void CheckAuthors() {
-            lbxAuthors.Enabled = btnMoveDown.Enabled = btnMoveUp.Enabled = btnRemove.Enabled = lbxAuthors.Items.Count > 0;
+            lbxAuthors.Enabled = btnRemove.Enabled = lbxAuthors.Items.Count > 0;
+            btnMoveDown.Enabled = btnMoveUp.Enabled = lbxAuthors.Items.Count > 1;
 
             if(lbxAuthors.Items.Count == 0) {
                 lbxAuthors.Items.Add(noAuthors);
