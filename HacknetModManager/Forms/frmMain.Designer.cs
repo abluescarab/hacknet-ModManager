@@ -45,7 +45,7 @@
             this.btnPlayUnmodded = new System.Windows.Forms.Button();
             this.btnPlayPathfinder = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.status = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -55,7 +55,7 @@
             this.tlpTop.SuspendLayout();
             this.tlpSide.SuspendLayout();
             this.tlpPlay.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.status.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -355,15 +355,15 @@
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
-            // statusStrip1
+            // status
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.status.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 249);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(534, 22);
-            this.statusStrip1.TabIndex = 4;
-            this.statusStrip1.Text = "statusStrip1";
+            this.status.Location = new System.Drawing.Point(0, 249);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(534, 22);
+            this.status.TabIndex = 4;
+            this.status.Text = "statusStrip1";
             // 
             // lblStatus
             // 
@@ -376,7 +376,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(534, 271);
-            this.Controls.Add(this.statusStrip1);
+            this.Controls.Add(this.status);
             this.Controls.Add(this.splitContainer1);
             this.MinimumSize = new System.Drawing.Size(440, 310);
             this.Name = "frmMain";
@@ -394,8 +394,8 @@
             this.tlpTop.ResumeLayout(false);
             this.tlpSide.ResumeLayout(false);
             this.tlpPlay.ResumeLayout(false);
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.status.ResumeLayout(false);
+            this.status.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -424,7 +424,7 @@
         private System.Windows.Forms.Button btnHomepage;
         private System.Windows.Forms.ListView listMods;
         private System.Windows.Forms.Button btnUpdate;
-        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.StatusStrip status;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }
