@@ -43,7 +43,7 @@
             this.lbxReleases.IntegralHeight = false;
             this.lbxReleases.Location = new System.Drawing.Point(12, 25);
             this.lbxReleases.Name = "lbxReleases";
-            this.lbxReleases.Size = new System.Drawing.Size(300, 145);
+            this.lbxReleases.Size = new System.Drawing.Size(268, 145);
             this.lbxReleases.TabIndex = 0;
             // 
             // lblChooseRelease
@@ -52,9 +52,9 @@
             this.lblChooseRelease.ForeColor = System.Drawing.Color.White;
             this.lblChooseRelease.Location = new System.Drawing.Point(12, 9);
             this.lblChooseRelease.Name = "lblChooseRelease";
-            this.lblChooseRelease.Size = new System.Drawing.Size(204, 13);
+            this.lblChooseRelease.Size = new System.Drawing.Size(175, 13);
             this.lblChooseRelease.TabIndex = 1;
-            this.lblChooseRelease.Text = "Choose which release of {0} to download:";
+            this.lblChooseRelease.Text = "Choose which release to download:";
             // 
             // btnOK
             // 
@@ -96,7 +96,7 @@
             this.tlpButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tlpButtons.Controls.Add(this.btnOK, 0, 0);
             this.tlpButtons.Controls.Add(this.btnCancel, 1, 0);
-            this.tlpButtons.Location = new System.Drawing.Point(152, 176);
+            this.tlpButtons.Location = new System.Drawing.Point(120, 176);
             this.tlpButtons.Name = "tlpButtons";
             this.tlpButtons.RowCount = 1;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -110,7 +110,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(324, 213);
+            this.ClientSize = new System.Drawing.Size(292, 213);
             this.Controls.Add(this.tlpButtons);
             this.Controls.Add(this.lblChooseRelease);
             this.Controls.Add(this.lbxReleases);

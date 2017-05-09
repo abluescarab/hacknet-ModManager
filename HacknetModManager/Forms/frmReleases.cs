@@ -18,7 +18,6 @@ namespace HacknetModManager {
         public DialogResult ShowDialog(GitHubClient client, Mod mod) {
             this.client = client;
             this.mod = mod;
-            lblChooseRelease.Text = string.Format(lblChooseRelease.Text, mod.Title);
             Match match;
 
             if(Mod.IsValid(client, mod.Repository, out match)) {
