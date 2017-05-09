@@ -93,6 +93,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listMods.CheckBoxes = true;
+            this.listMods.HideSelection = false;
             this.listMods.Location = new System.Drawing.Point(12, 50);
             this.listMods.Name = "listMods";
             this.listMods.ShowGroups = false;
