@@ -97,6 +97,17 @@ namespace HacknetModManager {
         }
 
         private void btnChooseRelease_Click(object sender, EventArgs e) {
+            // todo: open release window
+        }
+
+        private void btnEditModInfo_Click(object sender, EventArgs e) {
+            frmEdit form = new frmEdit();
+            form.ShowDialog(Mods[listMods.SelectedItems[0].Text]);
+            // todo: write info file
+            //LoadMods();
+        }
+
+        private void btnUpdateModManager_Click(object sender, EventArgs e) {
 
         }
 
@@ -107,6 +118,7 @@ namespace HacknetModManager {
             }
             else {
                 btnHomepage.Enabled = false;
+                btnEditModInfo.Enabled = false;
                 lblTitleVersion.Text = "N/A";
                 lblDescription.Text = "N/A";
                 lblAuthors.Text = "N/A";
@@ -205,7 +217,11 @@ namespace HacknetModManager {
 
         private void SetCheckedAll(bool check) {
             for(int i = 0; i < listMods.Items.Count; i++) {
-                listMods.Items[i].Checked = check;
+                ListViewItem item = listMods.Items[i];
+
+                if(item.Checked != check) {
+                    listMods.Items[i].Checked = check;
+                }
             }
         }
     }
