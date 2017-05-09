@@ -45,6 +45,8 @@
             this.btnPlayUnmodded = new System.Windows.Forms.Button();
             this.btnPlayPathfinder = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -53,11 +55,14 @@
             this.tlpTop.SuspendLayout();
             this.tlpSide.SuspendLayout();
             this.tlpPlay.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
             this.splitContainer1.Name = "splitContainer1";
             // 
@@ -77,17 +82,20 @@
             this.splitContainer1.Panel2.Controls.Add(this.lblTitleVersion);
             this.splitContainer1.Panel2.Controls.Add(this.tlpPlay);
             this.splitContainer1.Panel2MinSize = 215;
-            this.splitContainer1.Size = new System.Drawing.Size(540, 391);
+            this.splitContainer1.Size = new System.Drawing.Size(534, 246);
             this.splitContainer1.SplitterDistance = 200;
             this.splitContainer1.TabIndex = 3;
             // 
             // listMods
             // 
+            this.listMods.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.listMods.CheckBoxes = true;
             this.listMods.Location = new System.Drawing.Point(12, 50);
             this.listMods.Name = "listMods";
             this.listMods.ShowGroups = false;
-            this.listMods.Size = new System.Drawing.Size(185, 292);
+            this.listMods.Size = new System.Drawing.Size(185, 156);
             this.listMods.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listMods.TabIndex = 7;
             this.listMods.UseCompatibleStateImageBehavior = false;
@@ -105,7 +113,7 @@
             this.tlpBottom.Controls.Add(this.btnRemove, 1, 0);
             this.tlpBottom.Controls.Add(this.btnInstall, 0, 0);
             this.tlpBottom.Controls.Add(this.btnRefresh, 2, 0);
-            this.tlpBottom.Location = new System.Drawing.Point(12, 348);
+            this.tlpBottom.Location = new System.Drawing.Point(12, 212);
             this.tlpBottom.Name = "tlpBottom";
             this.tlpBottom.RowCount = 1;
             this.tlpBottom.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -198,7 +206,8 @@
             // 
             // tlpSide
             // 
-            this.tlpSide.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.tlpSide.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tlpSide.ColumnCount = 1;
             this.tlpSide.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpSide.Controls.Add(this.btnHomepage, 0, 0);
@@ -213,7 +222,7 @@
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tlpSide.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tlpSide.Size = new System.Drawing.Size(115, 261);
+            this.tlpSide.Size = new System.Drawing.Size(109, 125);
             this.tlpSide.TabIndex = 7;
             // 
             // btnCreateMod
@@ -221,7 +230,7 @@
             this.btnCreateMod.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCreateMod.Location = new System.Drawing.Point(3, 96);
             this.btnCreateMod.Name = "btnCreateMod";
-            this.btnCreateMod.Size = new System.Drawing.Size(109, 25);
+            this.btnCreateMod.Size = new System.Drawing.Size(103, 25);
             this.btnCreateMod.TabIndex = 2;
             this.btnCreateMod.Text = "Create";
             this.btnCreateMod.UseVisualStyleBackColor = true;
@@ -231,7 +240,7 @@
             this.btnEditMod.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnEditMod.Location = new System.Drawing.Point(3, 65);
             this.btnEditMod.Name = "btnEditMod";
-            this.btnEditMod.Size = new System.Drawing.Size(109, 25);
+            this.btnEditMod.Size = new System.Drawing.Size(103, 25);
             this.btnEditMod.TabIndex = 3;
             this.btnEditMod.Text = "Edit";
             this.btnEditMod.UseVisualStyleBackColor = true;
@@ -241,7 +250,7 @@
             this.btnHomepage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnHomepage.Location = new System.Drawing.Point(3, 3);
             this.btnHomepage.Name = "btnHomepage";
-            this.btnHomepage.Size = new System.Drawing.Size(109, 25);
+            this.btnHomepage.Size = new System.Drawing.Size(103, 25);
             this.btnHomepage.TabIndex = 4;
             this.btnHomepage.Text = "Visit Homepage";
             this.btnHomepage.UseVisualStyleBackColor = true;
@@ -256,7 +265,7 @@
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
             this.txtInfo.ReadOnly = true;
-            this.txtInfo.Size = new System.Drawing.Size(200, 261);
+            this.txtInfo.Size = new System.Drawing.Size(200, 125);
             this.txtInfo.TabIndex = 6;
             this.txtInfo.Text = "No information.";
             // 
@@ -306,11 +315,11 @@
             this.tlpPlay.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tlpPlay.Controls.Add(this.btnPlayUnmodded, 0, 0);
             this.tlpPlay.Controls.Add(this.btnPlayPathfinder, 1, 0);
-            this.tlpPlay.Location = new System.Drawing.Point(3, 348);
+            this.tlpPlay.Location = new System.Drawing.Point(3, 212);
             this.tlpPlay.Name = "tlpPlay";
             this.tlpPlay.RowCount = 1;
             this.tlpPlay.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tlpPlay.Size = new System.Drawing.Size(321, 31);
+            this.tlpPlay.Size = new System.Drawing.Size(315, 31);
             this.tlpPlay.TabIndex = 2;
             // 
             // btnPlayUnmodded
@@ -318,7 +327,7 @@
             this.btnPlayUnmodded.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnPlayUnmodded.Location = new System.Drawing.Point(3, 3);
             this.btnPlayUnmodded.Name = "btnPlayUnmodded";
-            this.btnPlayUnmodded.Size = new System.Drawing.Size(154, 25);
+            this.btnPlayUnmodded.Size = new System.Drawing.Size(151, 25);
             this.btnPlayUnmodded.TabIndex = 1;
             this.btnPlayUnmodded.Text = "Play (Unmodded)";
             this.btnPlayUnmodded.UseVisualStyleBackColor = true;
@@ -327,9 +336,9 @@
             // btnPlayPathfinder
             // 
             this.btnPlayPathfinder.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPlayPathfinder.Location = new System.Drawing.Point(163, 3);
+            this.btnPlayPathfinder.Location = new System.Drawing.Point(160, 3);
             this.btnPlayPathfinder.Name = "btnPlayPathfinder";
-            this.btnPlayPathfinder.Size = new System.Drawing.Size(155, 25);
+            this.btnPlayPathfinder.Size = new System.Drawing.Size(152, 25);
             this.btnPlayPathfinder.TabIndex = 0;
             this.btnPlayPathfinder.Text = "Play (Pathfinder)";
             this.btnPlayPathfinder.UseVisualStyleBackColor = true;
@@ -340,18 +349,36 @@
             this.btnUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnUpdate.Location = new System.Drawing.Point(3, 34);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(109, 25);
+            this.btnUpdate.Size = new System.Drawing.Size(103, 25);
             this.btnUpdate.TabIndex = 5;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 249);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(534, 22);
+            this.statusStrip1.TabIndex = 4;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(39, 17);
+            this.lblStatus.Text = "Ready";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(540, 391);
+            this.ClientSize = new System.Drawing.Size(534, 271);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.splitContainer1);
-            this.MinimumSize = new System.Drawing.Size(435, 39);
+            this.MinimumSize = new System.Drawing.Size(440, 310);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Hacknet Mod Manager";
@@ -367,7 +394,10 @@
             this.tlpTop.ResumeLayout(false);
             this.tlpSide.ResumeLayout(false);
             this.tlpPlay.ResumeLayout(false);
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -394,6 +424,8 @@
         private System.Windows.Forms.Button btnHomepage;
         private System.Windows.Forms.ListView listMods;
         private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel lblStatus;
     }
 }
 
