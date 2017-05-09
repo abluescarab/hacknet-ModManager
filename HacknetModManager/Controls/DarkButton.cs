@@ -6,11 +6,11 @@ namespace HacknetModManager.Controls {
         public DarkButton() {
             FlatStyle = FlatStyle.Flat;
             FlatAppearance.BorderSize = 0;
-            FlatAppearance.BorderColor = Color.FromArgb(0, 255, 255, 255);
-            FlatAppearance.MouseDownBackColor = Color.FromArgb(74, 74, 74);
+            FlatAppearance.BorderColor = DarkTheme.Transparent;
+            FlatAppearance.MouseDownBackColor = DarkTheme.DarkDarkBackColor;
             FlatAppearance.MouseOverBackColor = Color.FromArgb(60, 60, 60);
-            BackColor = Color.FromArgb(50, 50, 50);
-            ForeColor = Color.White;
+            BackColor = DarkTheme.DarkBackColor;
+            ForeColor = DarkTheme.TextColor;
         }
     }
 }
