@@ -1,6 +1,6 @@
 ﻿namespace HacknetModManager.Forms
 {
-    partial class windowDownload
+    partial class frmDownload
     {
         /// <summary>
         /// Required designer variable.

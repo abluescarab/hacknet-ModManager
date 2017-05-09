@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
 namespace HacknetModManager.Forms {
-    public partial class windowDownload : Form {
-        public windowDownload() {
+    public partial class frmDownload : Form {
+        public frmDownload() {
             InitializeComponent();
         }
     }
