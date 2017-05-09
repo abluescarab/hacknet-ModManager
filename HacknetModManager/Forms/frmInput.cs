@@ -18,7 +18,7 @@ namespace HacknetModManager {
 
         public DialogResult ShowDialog(string title, string text) {
             Text = title;
-            txtInput.Text = text;
+            lblInput.Text = text;
             return ShowDialog();
         }
 
