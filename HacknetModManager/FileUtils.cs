@@ -31,7 +31,7 @@ namespace HacknetModManager {
         // Following source modified from http://stackoverflow.com/a/12292399/567983
 
         public static void FileCopyWithReplicate(string source, string dest, bool overwrite, bool deleteSource = false,
-            bool deleteContents = false) {
+            bool deleteSourceContents = false) {
             string destDirectory = Path.GetDirectoryName(dest);
             Directory.CreateDirectory(destDirectory);
 
