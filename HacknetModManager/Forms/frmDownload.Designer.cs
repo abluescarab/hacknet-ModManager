@@ -1,4 +1,4 @@
-﻿namespace HacknetModManager.Forms
+﻿namespace HacknetModManager
 {
     partial class frmDownload
     {
