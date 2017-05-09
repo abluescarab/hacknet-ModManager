@@ -36,7 +36,7 @@ namespace HacknetModManager {
             Directory.CreateDirectory(destDirectory);
 
             if(Directory.Exists(source)) {
-                DirectoryCopy(source, dest, overwrite, deleteContents);
+                DirectoryCopy(source, dest, overwrite, deleteSourceContents);
                 if(deleteSource) Directory.Delete(source);
             }
             else if(File.Exists(source)) {
