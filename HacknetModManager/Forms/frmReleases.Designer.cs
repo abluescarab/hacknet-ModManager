@@ -1,5 +1,5 @@
 ﻿namespace HacknetModManager {
-    partial class frmDownload {
+    partial class frmReleases {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -103,7 +103,7 @@
             this.tlpButtons.Size = new System.Drawing.Size(160, 25);
             this.tlpButtons.TabIndex = 5;
             // 
-            // frmDownload
+            // frmReleases
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,7 +117,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmDownload";
+            this.Name = "frmReleases";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

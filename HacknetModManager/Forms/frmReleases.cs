@@ -3,7 +3,7 @@ using System.Windows.Forms;
 using Octokit;
 
 namespace HacknetModManager {
-    public partial class frmDownload : Form {
+    public partial class frmReleases : Form {
         public Release Release { get; private set; }
 
         private Mod mod;
@@ -11,7 +11,7 @@ namespace HacknetModManager {
         private string repo;
         private string user;
 
-        public frmDownload() {
+        public frmReleases() {
             InitializeComponent();
         }
 
