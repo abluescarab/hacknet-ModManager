@@ -43,8 +43,9 @@
             this.tlpButtons.Name = "tlpButtons";
             this.tlpButtons.RowCount = 1;
             this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tlpButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tlpButtons.Size = new System.Drawing.Size(160, 25);
-            this.tlpButtons.TabIndex = 8;
+            this.tlpButtons.TabIndex = 1;
             // 
             // btnOK
             // 
@@ -99,7 +100,7 @@
             this.txtInput.Location = new System.Drawing.Point(12, 25);
             this.txtInput.Name = "txtInput";
             this.txtInput.Size = new System.Drawing.Size(251, 20);
-            this.txtInput.TabIndex = 10;
+            this.txtInput.TabIndex = 0;
             // 
             // frmInput
             // 
