@@ -15,6 +15,8 @@ namespace HacknetModManager {
         public static Dictionary<string, Mod> Mods { get; private set; }
         public static Octokit.GitHubClient Client { get; private set; }
 
+        private bool doEnableDisable = false;
+
         public frmMain() {
             InitializeComponent();
         }
@@ -112,6 +114,28 @@ namespace HacknetModManager {
             }
         }
 
+        private void listMods_ItemChecked(object sender, ItemCheckedEventArgs e) {
+            if(doEnableDisable) {
+                Mod mod = Mods[e.Item.Text];
+                string moveFrom = "";
+                string moveTo = "";
+
+                if(e.Item.Checked) {
+                    moveFrom = Path.Combine(ModsFolder, mod.Name + ".dll.disabled");
+                    moveTo = moveFrom.Remove(moveFrom.LastIndexOf(".disabled"));
+                }
+                else {
+                    moveFrom = Path.Combine(ModsFolder, mod.Name + ".dll");
+                    moveTo = moveFrom + ".disabled";
+                }
+
+                if(File.Exists(moveFrom)) {
+                    File.Copy(moveFrom, moveTo, true);
+                    File.Delete(moveFrom);
+                }
+            }
+        }
+
         private bool CheckForHacknet() {
             return File.Exists(Path.Combine(Directory.GetCurrentDirectory(), "Hacknet.exe"));
         }
@@ -151,17 +175,18 @@ namespace HacknetModManager {
         }
 
         private void LoadMods() {
+            doEnableDisable = false;
+
             if(Mods.Count > 0) {
                 Mods.Clear();
                 listMods.Items.Clear();
             }
 
-            var dlls = Directory.GetFiles(ModsFolder, "*.dll", SearchOption.TopDirectoryOnly);
+            var mods = FileUtils.GetFiles(ModsFolder, SearchOption.TopDirectoryOnly, "*.dll", "*.dll.disabled");
             var jsons = Directory.GetFiles(ModsFolder, "*.json", SearchOption.TopDirectoryOnly);
 
-            foreach(string dll in dlls) {
-                string name = Path.GetFileNameWithoutExtension(dll);
-
+            foreach(string mod in mods) {
+                string name = Regex.Match(mod.Remove(0, mod.LastIndexOf("\\") + 1), @"(.*)\.dll.*").Groups[1].ToString();
                 string json = jsons.FirstOrDefault(j => Regex.IsMatch(j, @".*\\" + name + @"\.json"));
 
                 if(!string.IsNullOrWhiteSpace(json)) {
@@ -170,11 +195,12 @@ namespace HacknetModManager {
                 else {
                     Mods.Add(name, new Mod(name));
                 }
+
+                ListViewItem item = listMods.Items.Add(name);
+                item.Checked = !mod.Contains(".disabled");
             }
 
-            foreach(string name in Mods.Keys) {
-                listMods.Items.Add(name);
-            }
+            doEnableDisable = true;
         }
 
         private void SetCheckedAll(bool check) {

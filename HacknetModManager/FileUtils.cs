@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
@@ -25,6 +26,19 @@ namespace HacknetModManager {
             process.StartInfo.Arguments = string.Join(" ", args);
 
             process.Start();
+        }
+
+        public static string[] GetFiles(string path, SearchOption searchOption, string searchPattern, params string[] searchPatterns) {
+            List<string> files = new List<string>();
+
+            files.AddRange(Directory.GetFiles(path, searchPattern, searchOption));
+
+            foreach(string pattern in searchPatterns) {
+                files.AddRange(Directory.GetFiles(path, pattern, searchOption));
+            }
+
+            files.Sort();
+            return files.ToArray();
         }
 
         // --------------------------------------------------------------------
