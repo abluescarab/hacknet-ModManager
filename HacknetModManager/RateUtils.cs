@@ -13,9 +13,9 @@ namespace HacknetModManager {
 
         public static string GetFormattedResetTime(RateLimit limit, bool twentyFourHour) {
             if(twentyFourHour)
-                return limit.Reset.DateTime.ToString("H:mm:ss");
+                return limit.Reset.LocalDateTime.ToString("H:mm:ss");
             else
-                return limit.Reset.DateTime.ToString("h:mm:ss tt");
+                return limit.Reset.LocalDateTime.ToString("h:mm:ss tt");
         }
 
         public static void ShowRateErrorMessage(GitHubClient client, bool twentyFourHour) {
