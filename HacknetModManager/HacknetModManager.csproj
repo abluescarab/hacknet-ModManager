@@ -65,11 +65,11 @@
     </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="FileUtils.cs" />
-    <Compile Include="Forms\frmDownload.cs">
+    <Compile Include="Forms\frmReleases.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmDownload.Designer.cs">
-      <DependentUpon>frmDownload.cs</DependentUpon>
+    <Compile Include="Forms\frmReleases.Designer.cs">
+      <DependentUpon>frmReleases.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\frmEdit.cs">
       <SubType>Form</SubType>
@@ -98,8 +98,9 @@
     <Compile Include="Mod.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\frmDownload.resx">
-      <DependentUpon>frmDownload.cs</DependentUpon>
+    <Compile Include="RateUtils.cs" />
+    <EmbeddedResource Include="Forms\frmReleases.resx">
+      <DependentUpon>frmReleases.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmEdit.resx">
       <DependentUpon>frmEdit.cs</DependentUpon>
