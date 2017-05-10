@@ -61,6 +61,7 @@ namespace HacknetModManager.Controls {
             get { return DarkDarkBackColor; }
         }
 
+        // ImageMarginGradient
         public override Color ImageMarginGradientBegin {
             get { return LightLightBackColor; }
         }
