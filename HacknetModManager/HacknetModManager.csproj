@@ -56,7 +56,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DarkTheme.cs" />
+    <Compile Include="Controls\DarkMenuStripRenderer.cs" />
+    <Compile Include="Controls\DarkTheme.cs" />
     <Compile Include="Controls\DarkListView.cs">
       <SubType>Component</SubType>
     </Compile>
