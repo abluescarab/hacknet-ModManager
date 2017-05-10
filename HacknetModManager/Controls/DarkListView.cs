@@ -4,7 +4,7 @@ using System.Windows.Forms;
 namespace HacknetModManager.Controls {
     public class DarkListView : ListView {
         public DarkListView() {
-            BackColor = DarkTheme.LightBackColor;
+            BackColor = DarkTheme.LightLightBackColor;
             ForeColor = DarkTheme.TextColor;
             OwnerDraw = true;
             DrawItem += DarkListView_DrawItem;
