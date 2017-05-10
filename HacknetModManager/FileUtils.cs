@@ -44,6 +44,10 @@ namespace HacknetModManager {
         public static List<string> Unzip(string file, string extractFolder) {
             List<string> files = new List<string>();
 
+            if(!Directory.Exists(extractFolder)) {
+                Directory.CreateDirectory(extractFolder);
+            }
+
             if(!string.IsNullOrWhiteSpace(file) && file.EndsWith(file) && File.Exists(file)) {
                 using(ZipArchive archive = ZipFile.OpenRead(file)) {
                     foreach(ZipArchiveEntry entry in archive.Entries) {
@@ -69,6 +73,8 @@ namespace HacknetModManager {
             bool deleteSourceContents = false) {
             string destDirectory = Path.GetDirectoryName(dest);
             Directory.CreateDirectory(destDirectory);
+
+            if(deleteSource) deleteSourceContents = true;
 
             if(Directory.Exists(source)) {
                 DirectoryCopy(source, dest, overwrite, deleteSourceContents);
