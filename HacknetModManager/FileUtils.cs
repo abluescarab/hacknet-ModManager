@@ -1,21 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
-using Octokit;
 
 namespace HacknetModManager {
     static class FileUtils {
+        /// <summary>
+        /// Create a folder.
+        /// </summary>
+        /// <param name="path">folder path</param>
         public static void CreateFolder(string path) {
             if(!Directory.Exists(path)) {
                 Directory.CreateDirectory(path);
             }
         }
 
+        /// <summary>
+        /// Start a process silently.
+        /// </summary>
+        /// <param name="path">path to process</param>
+        /// <param name="args">arguments to send to process</param>
         public static void StartSilent(string path, string[] args) {
             Process process = new Process();
 
@@ -28,6 +32,14 @@ namespace HacknetModManager {
             process.Start();
         }
 
+        /// <summary>
+        /// Get files with multiple search patterns.
+        /// </summary>
+        /// <param name="path">folder path</param>
+        /// <param name="searchOption">search option</param>
+        /// <param name="searchPattern">first search pattern</param>
+        /// <param name="searchPatterns">subsequent search patterns</param>
+        /// <returns>files matching search patterns</returns>
         public static string[] GetFiles(string path, SearchOption searchOption, string searchPattern, params string[] searchPatterns) {
             List<string> files = new List<string>();
 
@@ -41,6 +53,12 @@ namespace HacknetModManager {
             return files.ToArray();
         }
 
+        /// <summary>
+        /// Unzip a file.
+        /// </summary>
+        /// <param name="file">zip file path</param>
+        /// <param name="extractFolder">where to extract files</param>
+        /// <returns>list of extracted files</returns>
         public static List<string> Unzip(string file, string extractFolder) {
             List<string> files = new List<string>();
 
@@ -65,7 +83,37 @@ namespace HacknetModManager {
 
             return files;
         }
-        
+
+        /// <summary>
+        /// Delete a directory's content.
+        /// </summary>
+        /// <param name="directory">directory path</param>
+        /// <param name="recursive">whether to delete subdirectories</param>
+        public static void DeleteDirectoryContents(string directory, bool recursive = true, bool deleteDirectory = false) {
+            DirectoryInfo dir = new DirectoryInfo(directory);
+            DirectoryInfo[] dirs = dir.GetDirectories();
+
+            if(!dir.Exists) {
+                throw new DirectoryNotFoundException(
+                    "Directory does not exist or could not be found: " + directory);
+            }
+
+            FileInfo[] files = dir.GetFiles();
+            foreach(FileInfo file in files) {
+                file.Delete();
+            }
+
+            if(recursive) {
+                foreach(DirectoryInfo subdir in dirs) {
+                    DeleteDirectoryContents(subdir.FullName, recursive);
+                }
+            }
+
+            if(deleteDirectory) {
+                dir.Delete();
+            }
+        }
+
         // --------------------------------------------------------------------
         // Following source modified from http://stackoverflow.com/a/12292399/567983
 
@@ -115,16 +163,5 @@ namespace HacknetModManager {
                 }
             }
         }
-
-        //
-        //        public static void CreateFile(string path, string data) {
-        //            var file = CreateFileAsync(path, data);
-        //        }
-        //
-        //        private async static Task CreateFileAsync(string path, string data) {
-        //            using(StreamWriter writer = new StreamWriter(path, false)) {
-        //                await writer.WriteAsync(data);
-        //            }
-        //        }
     }
 }
