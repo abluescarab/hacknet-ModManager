@@ -304,6 +304,7 @@
             this.txtInfo.Location = new System.Drawing.Point(334, 64);
             this.txtInfo.Multiline = true;
             this.txtInfo.Name = "txtInfo";
+            this.txtInfo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtInfo.Size = new System.Drawing.Size(178, 146);
             this.txtInfo.TabIndex = 10;
             this.txtInfo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtInfo_KeyDown);
