@@ -69,7 +69,7 @@ namespace HacknetModManager {
             mod.Version = txtVersion.Text;
             mod.Homepage = txtHomepage.Text;
             mod.Repository = txtRepository.Text;
-            mod.Authors = lbxAuthors.Items.Cast<string>().ToArray();
+            mod.Authors = (lbxAuthors.Enabled ? lbxAuthors.Items.Cast<string>().ToArray() : new string[] { });
             mod.Info = txtInfo.Text;
 
             DialogResult = DialogResult.OK;
