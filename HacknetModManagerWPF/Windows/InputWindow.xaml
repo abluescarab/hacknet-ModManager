@@ -10,7 +10,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" x:Name="lblInput" Content="Input:" />
+        <Label Grid.Row="0" x:Name="lblPrompt" Content="Input:" />
         <TextBox Grid.Row="1" x:Name="txtInput" Margin="3" VerticalAlignment="Top" />
         <local:PopupButtons Grid.Row="2" x:Name="popupButtons" OKClicked="popupButtons_OKClicked"
                 CancelClicked="popupButtons_CancelClicked" />
