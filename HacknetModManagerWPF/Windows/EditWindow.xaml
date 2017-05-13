@@ -2,8 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HacknetModManager" mc:Ignorable="d" Title="Edit Mod Info" Height="300" Width="500"
-        ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        xmlns:local="clr-namespace:HacknetModManager" mc:Ignorable="d" Title="Edit Mod Info" Height="290" Width="500"
+        MinHeight="290" MinWidth="450" ShowInTaskbar="False" WindowStartupLocation="CenterOwner">
     <Grid Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -23,34 +23,36 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Label Grid.Row="0" Grid.Column="0" Content="Title:" />
-            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtTitle" Margin="3" />
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="txtTitle" />
             <Label Grid.Row="1" Grid.Column="0" Content="Version:" />
-            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtVersion" Margin="3" />
+            <TextBox Grid.Row="1" Grid.Column="1" x:Name="txtVersion" />
             <Label Grid.Row="2" Grid.Column="0" Content="Repository:" />
-            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtRepository" Margin="3" />
+            <TextBox Grid.Row="2" Grid.Column="1" x:Name="txtRepository" />
             <Label Grid.Row="3" Grid.Column="0" Content="Authors:" />
             <Grid Grid.Row="3" Grid.Column="1">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="auto" />
                 </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
+                <!--<Grid.RowDefinitions>
                     <RowDefinition Height="auto" />
-                </Grid.RowDefinitions>
-                <ListBox Grid.Column="0" x:Name="lbxAuthors" Margin="3" />
+                </Grid.RowDefinitions>-->
+                <ListBox Grid.Column="0" x:Name="lbxAuthors" SelectionMode="Extended"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto" />
                 <StackPanel Grid.Column="1" Orientation="Vertical">
-                    <Button x:Name="btnAdd" Content="{StaticResource add}" Width="25" Margin="3" />
-                    <Button x:Name="btnRemove" Content="{StaticResource delete}" Width="25" Margin="3" />
-                    <Button x:Name="btnMoveUp" Content="{StaticResource arrow_up}" Width="25" Margin="3" />
-                    <Button x:Name="btnMoveDown" Content="{StaticResource arrow_down}" Width="25" Margin="3" />
+                    <Button x:Name="btnAdd" Content="{StaticResource add}" Width="25" Click="btnAdd_Click" />
+                    <Button x:Name="btnRemove" Content="{StaticResource delete}" Width="25" Click="btnRemove_Click" />
+                    <Button x:Name="btnMoveUp" Content="{StaticResource arrow_up}" Width="25" Click="btnMoveUp_Click" />
+                    <Button x:Name="btnMoveDown" Content="{StaticResource arrow_down}" Width="25"
+                            Click="btnMoveDown_Click" />
                 </StackPanel>
             </Grid>
             <Label Grid.Row="0" Grid.Column="2" Content="Description:" />
-            <TextBox Grid.Row="0" Grid.Column="3" x:Name="txtDescription" Margin="3" />
+            <TextBox Grid.Row="0" Grid.Column="3" x:Name="txtDescription" />
             <Label Grid.Row="1" Grid.Column="2" Content="Homepage:" />
-            <TextBox Grid.Row="1" Grid.Column="3" x:Name="txtHomepage" Margin="3" />
+            <TextBox Grid.Row="1" Grid.Column="3" x:Name="txtHomepage" />
             <Label Grid.Row="2" Grid.Column="2" Content="Info:" />
-            <TextBox Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" x:Name="txtInfo" Margin="3"
+            <TextBox Grid.Row="2" Grid.Column="3" Grid.RowSpan="2" x:Name="txtInfo"
                     HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
                     TextWrapping="Wrap" />
         </Grid>
