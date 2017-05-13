@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Reflection;
+﻿using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -29,65 +26,61 @@ namespace HacknetModManager {
             return window.ShowDialog();
         }
 
-        //public static void MoveUp(this ListBox listBox) {
-        //    int[] final = new int[listBox.SelectedItems.Count];
-        //    int n = 0;
+        public static void MoveUp(this ListBox listBox) {
+            string[] final = new string[listBox.SelectedItems.Count];
+            int n = 0;
 
-        //    final.Repeat(-1);
+            for(int i = 1; i < listBox.Items.Count; i++) {
+                string item = (string)listBox.Items[i];
 
-        //    for(int i = 1; i < listBox.Items.Count; i++) {
-        //        var item = listBox.Items[i];
+                if(listBox.SelectedItems.Contains(item) && ShouldMoveItems(listBox, i, true)) {
+                    listBox.Items.RemoveAt(i);
+                    listBox.Items.Insert(i - 1, item);
+                    final[n++] = item;
+                }
+            }
 
-        //        if(listBox.SelectedItems.Contains(item) && ShouldMoveItems(listBox, i, true)) {
-        //            listBox.Items.RemoveAt(i);
-        //            listBox.Items.Insert(i - 1, item);
-        //            final[n++] = i - 1;
-        //        }
-        //    }
+            foreach(string item in final) {
+                if(!string.IsNullOrEmpty(item)) {
+                    listBox.SelectedItems.Add(item);
+                }
+            }
+        }
 
-        //    foreach(int index in final) {
-        //        if(index > -1) {
-        //            listBox.SelectedIndices.Add(index);
-        //        }
-        //    }
-        //}
+        public static void MoveDown(this ListBox listBox) {
+            string[] final = new string[listBox.SelectedItems.Count];
+            int n = 0;
 
-        //public static void MoveDown(this ListBox listBox) {
-        //    int[] final = new int[listBox.SelectedItems.Count];
-        //    int n = 0;
+            for(int i = listBox.Items.Count - 1; i >= 0; i--) {
+                string item = (string)listBox.Items[i];
 
-        //    final.Repeat(-1);
+                if(listBox.SelectedItems.Contains(item) && ShouldMoveItems(listBox, i, false)) {
+                    listBox.Items.RemoveAt(i);
+                    listBox.Items.Insert(i + 1, item);
+                    final[n++] = item;
+                }
+            }
 
-        //    for(int i = listBox.Items.Count - 1; i >= 0; i--) {
-        //        var item = listBox.Items[i];
+            foreach(string item in final) {
+                if(!string.IsNullOrEmpty(item)) {
+                    listBox.SelectedItems.Add(item);
+                }
+            }
+        }
+        
+        private static bool ShouldMoveItems(ListBox listBox, int index, bool moveUp) {
+            int nextIndex = (moveUp ? index - 1 : index + 1);
+            int lastIndex = (moveUp ? 0 : listBox.Items.Count - 1);
 
-        //        if(listBox.SelectedItems.Contains(item) && ShouldMoveItems(listBox, i, false)) {
-        //            listBox.Items.RemoveAt(i);
-        //            listBox.Items.Insert(i + 1, item);
-        //            final[n++] = i + 1;
-        //        }
-        //    }
+            if((moveUp && nextIndex < lastIndex) || (!moveUp && nextIndex > lastIndex))
+                return false;
 
-        //    foreach(int index in final) {
-        //        if(index > -1) {
-        //            listBox.SelectedIndices.Add(index);
-        //        }
-        //    }
-        //}
-
-        //private static bool ShouldMoveItems(ListBox listBox, int index, bool moveUp) {
-        //    int nextIndex = (moveUp ? index - 1 : index + 1);
-        //    int lastIndex = (moveUp ? 0 : listBox.Items.Count - 1);
-
-        //    if((moveUp && nextIndex < lastIndex) || (!moveUp && nextIndex > lastIndex))
-        //        return false;
-
-        //    if(listBox.SelectedIndices.Contains(nextIndex)) {
-        //        return ShouldMoveItems(listBox, nextIndex, moveUp);
-        //    }
-        //    else {
-        //        return true;
-        //    }
-        //}
+            if(listBox.SelectedItems.Contains(listBox.Items[nextIndex])) {
+                return ShouldMoveItems(listBox, nextIndex, moveUp);
+            }
+            else {
+                return true;
+            }
+        }
     }
 }
