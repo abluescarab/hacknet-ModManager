@@ -1,0 +1,18 @@
+﻿<Window x:Class="HacknetModManager.ReleaseWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HacknetModManager" mc:Ignorable="d" Title="Choose Release" Height="300" Width="300"
+        ShowInTaskbar="false" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+    <Grid Margin="3">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Label Grid.Row="0" Content="Choose which release to download:" />
+        <ListBox Grid.Row="1" x:Name="lbxReleases" Margin="3" />
+        <local:PopupButtons Grid.Row="2" x:Name="popupButtons" OKClicked="popupButtons_OKClicked"
+                CancelClicked="popupButtons_CancelClicked" />
+    </Grid>
+</Window>

@@ -1,0 +1,14 @@
+﻿<Application x:Class="HacknetModManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:HacknetModManager"
+             StartupUri="Windows/MainWindow.xaml">
+    <Application.Resources>
+        <Image x:Key="folder_go" Source="Resources/folder_go.png" Width="16" Height="16"/>
+        <Image x:Key="arrow_refresh" Source="Resources/arrow_refresh.png" Width="16" Height="16"/>
+        <Image x:Key="add" Source="Resources/add.png" Width="16" Height="16"/>
+        <Image x:Key="delete" Source="Resources/delete.png" Width="16" Height="16"/>
+        <Image x:Key="arrow_down" Source="Resources/arrow_down.png" Width="16" Height="16"/>
+        <Image x:Key="arrow_up" Source="Resources/arrow_up.png" Width="16" Height="16"/>
+    </Application.Resources>
+</Application>

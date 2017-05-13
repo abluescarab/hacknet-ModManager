@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HacknetModManager", "HacknetModManager\HacknetModManager.csproj", "{199B4268-F8B6-4590-B70D-A27C6EB036AA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HacknetModManagerWPF", "HacknetModManagerWPF\HacknetModManagerWPF.csproj", "{43673B91-3B72-46FC-B91D-BF80F9448FAC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{199B4268-F8B6-4590-B70D-A27C6EB036AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{199B4268-F8B6-4590-B70D-A27C6EB036AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{199B4268-F8B6-4590-B70D-A27C6EB036AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{199B4268-F8B6-4590-B70D-A27C6EB036AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43673B91-3B72-46FC-B91D-BF80F9448FAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43673B91-3B72-46FC-B91D-BF80F9448FAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43673B91-3B72-46FC-B91D-BF80F9448FAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43673B91-3B72-46FC-B91D-BF80F9448FAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

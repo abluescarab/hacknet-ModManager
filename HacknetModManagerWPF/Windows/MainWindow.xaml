@@ -1,0 +1,129 @@
+﻿<Window x:Class="HacknetModManager.MainWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HacknetModManager" mc:Ignorable="d" Title="Hacknet Mod Manager" Height="400"
+        Width="600" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" MinHeight="300" MinWidth="475"
+        Activated="Window_Activated">
+    <Grid x:Name="gridWindow">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <Menu x:Name="menu" VerticalAlignment="Top" Height="auto">
+            <MenuItem x:Name="menuOptions" Header="_Options">
+                <MenuItem x:Name="optionsLightTheme" Header="_Light Theme" />
+                <MenuItem x:Name="optionsDarkTheme" Header="_Dark Theme" />
+            </MenuItem>
+        </Menu>
+        <Grid Grid.Row="1" Grid.Column="0" Margin="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" MinWidth="175" />
+                <ColumnDefinition Width="5" />
+                <ColumnDefinition Width="*" MinWidth="150" />
+                <ColumnDefinition Width="120" />
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="31" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="31" />
+                </Grid.RowDefinitions>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="31" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnEnableAll" Grid.Column="0" Content="Enable All" Margin="3" Height="25"
+                            Click="btnEnableAll_Click" />
+                    <Button x:Name="btnDisableAll" Grid.Column="1" Content="Disable All" Margin="3" Height="25"
+                            Click="btnDisableAll_Click" />
+                    <Button x:Name="btnOpenModsFolder" Grid.Column="2" Content="{StaticResource folder_go}" Margin="3"
+                            Height="25" Click="btnOpenModsFolder_Click" />
+                </Grid>
+                <ListBox Grid.Row="1" x:Name="listMods" Margin="3" HorizontalContentAlignment="Stretch" SelectionChanged="listMods_SelectionChanged">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type local:ModListViewItem}">
+                            <StackPanel Orientation="Horizontal" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"
+                                    Background="Transparent">
+                                <CheckBox IsChecked="{Binding IsChecked}" />
+                                <Label Content="{Binding Mod.Name}" Padding="0" Margin="3,0,0,0"
+                                        MouseDoubleClick="ListViewItem_MouseDoubleClick" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Grid Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="31" />
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="btnInstall" Grid.Column="0" Content="Install" Margin="3" Height="25"
+                                Click="btnInstall_Click" />
+                        <Button x:Name="btnRemove" Grid.Column="1" Content="Remove" Margin="3" Height="25"
+                                Click="btnRemove_Click" />
+                        <Button x:Name="btnReload" Grid.Column="2" Content="{StaticResource arrow_refresh}" Margin="3"
+                                Height="25" Click="btnReload_Click" />
+                    </Grid>
+                </Grid>
+            </Grid>
+            <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" />
+            <Grid Grid.Column="2">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" x:Name="lblTitleVersion" Content="N/A" FontSize="15" Margin="3" />
+                    <Label Grid.Row="1" x:Name="lblDescription" Content="N/A" Margin="3" />
+                    <Label Grid.Row="2" x:Name="lblAuthors" Content="N/A" Margin="3" />
+                    <TextBox Grid.Row="3" x:Name="txtInfo" IsReadOnly="True" HorizontalScrollBarVisibility="Disabled"
+                            TextWrapping="Wrap" AcceptsReturn="true" Text="No information." Margin="3"
+                            VerticalScrollBarVisibility="Auto" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="3">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="10" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="auto" />
+                        <RowDefinition Height="auto" />
+                    </Grid.RowDefinitions>
+                    <Button Grid.Row="0" Height="25" Margin="3" Content="Visit Homepage" x:Name="btnVisitHomepage"
+                            Click="btnVisitHomepage_Click" />
+                    <Button Grid.Row="2" Height="25" Margin="3" Content="Update Mod" x:Name="btnUpdateMod"
+                            Click="btnUpdateMod_Click" />
+                    <Button Grid.Row="3" Height="25" Margin="3" Content="Choose Release" x:Name="btnChooseRelease"
+                            Click="btnChooseRelease_Click" />
+                    <Button Grid.Row="4" Height="25" Margin="3" Content="Edit Mod Info" x:Name="btnEditModInfo"
+                            Click="btnEditModInfo_Click" />
+                    <Button Grid.Row="7" Height="25" Margin="3" Content="Play (Unmodded)" x:Name="btnPlayUnmodded"
+                            Click="btnPlayUnmodded_Click" />
+                    <Button Grid.Row="8" Height="25" Margin="3" Content="Play (Pathfinder)" x:Name="btnPlayPathfinder"
+                            Click="btnPlayPathfinder_Click" />
+                </Grid>
+            </Grid>
+        </Grid>
+        <StatusBar Grid.Row="2" x:Name="status" Height="auto">
+            <StatusBarItem x:Name="statusReady" Content="Ready" HorizontalAlignment="Left" />
+            <StatusBarItem Content="|" HorizontalAlignment="Left" />
+            <StatusBarItem x:Name="statusRequests" Content="0" ContentStringFormat="{}{0} requests remaining"
+                    HorizontalAlignment="Left" />
+            <StatusBarItem Content="|" HorizontalAlignment="Left" />
+            <StatusBarItem x:Name="statusReset" Content="12:00:00 AM" ContentStringFormat="Requests reset at {0}"
+                    HorizontalAlignment="Left" />
+        </StatusBar>
+    </Grid>
+</Window>

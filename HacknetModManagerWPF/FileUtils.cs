@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Compression;
 
 namespace HacknetModManager {
-    static class FileUtils {
+    public static class FileUtils {
         /// <summary>
         /// Create a folder.
         /// </summary>
