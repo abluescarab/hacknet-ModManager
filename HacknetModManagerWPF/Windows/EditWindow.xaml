@@ -39,10 +39,10 @@
                 </Grid.RowDefinitions>
                 <ListBox Grid.Column="0" x:Name="lbxAuthors" Margin="3" />
                 <StackPanel Grid.Column="1" Orientation="Vertical">
-                    <Button x:Name="btnAdd" Content="{StaticResource add}" Width="25" Height="25" Margin="3" />
-                    <Button x:Name="btnRemove" Content="{StaticResource delete}" Width="25" Height="25" Margin="3" />
-                    <Button x:Name="btnMoveUp" Content="{StaticResource arrow_up}" Width="25" Height="25" Margin="3" />
-                    <Button x:Name="btnMoveDown" Content="{StaticResource arrow_down}" Width="25" Height="25" Margin="3" />
+                    <Button x:Name="btnAdd" Content="{StaticResource add}" Width="25" Margin="3" />
+                    <Button x:Name="btnRemove" Content="{StaticResource delete}" Width="25" Margin="3" />
+                    <Button x:Name="btnMoveUp" Content="{StaticResource arrow_up}" Width="25" Margin="3" />
+                    <Button x:Name="btnMoveDown" Content="{StaticResource arrow_down}" Width="25" Margin="3" />
                 </StackPanel>
             </Grid>
             <Label Grid.Row="0" Grid.Column="2" Content="Description:" />
@@ -54,9 +54,7 @@
                     HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
                     TextWrapping="Wrap" />
         </Grid>
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="btnOK" Content="OK" Width="75" Height="25" Margin="3" />
-            <Button x:Name="btnCancel" Content="Cancel" Width="75" Height="25" Margin="3" />
-        </StackPanel>
+        <local:PopupButtons Grid.Row="1" x:Name="popupButtons" OKClicked="popupButtons_OKClicked"
+                CancelClicked="popupButtons_CancelClicked" />
     </Grid>
 </Window>

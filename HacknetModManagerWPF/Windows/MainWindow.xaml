@@ -36,14 +36,15 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="31" />
                     </Grid.ColumnDefinitions>
-                    <Button x:Name="btnEnableAll" Grid.Column="0" Content="Enable All" Margin="3" Height="25"
+                    <Button x:Name="btnEnableAll" Grid.Column="0" Content="Enable All" Margin="3"
                             Click="btnEnableAll_Click" />
-                    <Button x:Name="btnDisableAll" Grid.Column="1" Content="Disable All" Margin="3" Height="25"
+                    <Button x:Name="btnDisableAll" Grid.Column="1" Content="Disable All" Margin="3"
                             Click="btnDisableAll_Click" />
                     <Button x:Name="btnOpenModsFolder" Grid.Column="2" Content="{StaticResource folder_go}" Margin="3"
-                            Height="25" Click="btnOpenModsFolder_Click" />
+                            Click="btnOpenModsFolder_Click" />
                 </Grid>
-                <ListBox Grid.Row="1" x:Name="listMods" Margin="3" HorizontalContentAlignment="Stretch" SelectionChanged="listMods_SelectionChanged">
+                <ListBox Grid.Row="1" x:Name="listMods" Margin="3" HorizontalContentAlignment="Stretch"
+                        SelectionChanged="listMods_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate DataType="{x:Type local:ModListViewItem}">
                             <StackPanel Orientation="Horizontal" MouseLeftButtonDown="StackPanel_MouseLeftButtonDown"
@@ -62,12 +63,11 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="31" />
                         </Grid.ColumnDefinitions>
-                        <Button x:Name="btnInstall" Grid.Column="0" Content="Install" Margin="3" Height="25"
+                        <Button x:Name="btnInstall" Grid.Column="0" Content="Install" Margin="3"
                                 Click="btnInstall_Click" />
-                        <Button x:Name="btnRemove" Grid.Column="1" Content="Remove" Margin="3" Height="25"
-                                Click="btnRemove_Click" />
+                        <Button x:Name="btnRemove" Grid.Column="1" Content="Remove" Margin="3" Click="btnRemove_Click" />
                         <Button x:Name="btnReload" Grid.Column="2" Content="{StaticResource arrow_refresh}" Margin="3"
-                                Height="25" Click="btnReload_Click" />
+                                Click="btnReload_Click" />
                     </Grid>
                 </Grid>
             </Grid>
@@ -101,17 +101,17 @@
                         <RowDefinition Height="auto" />
                         <RowDefinition Height="auto" />
                     </Grid.RowDefinitions>
-                    <Button Grid.Row="0" Height="25" Margin="3" Content="Visit Homepage" x:Name="btnVisitHomepage"
+                    <Button Grid.Row="0" Margin="3" Content="Visit Homepage" x:Name="btnVisitHomepage"
                             Click="btnVisitHomepage_Click" />
-                    <Button Grid.Row="2" Height="25" Margin="3" Content="Update Mod" x:Name="btnUpdateMod"
+                    <Button Grid.Row="2" Margin="3" Content="Update Mod" x:Name="btnUpdateMod"
                             Click="btnUpdateMod_Click" />
-                    <Button Grid.Row="3" Height="25" Margin="3" Content="Choose Release" x:Name="btnChooseRelease"
+                    <Button Grid.Row="3" Margin="3" Content="Choose Release" x:Name="btnChooseRelease"
                             Click="btnChooseRelease_Click" />
-                    <Button Grid.Row="4" Height="25" Margin="3" Content="Edit Mod Info" x:Name="btnEditModInfo"
+                    <Button Grid.Row="4" Margin="3" Content="Edit Mod Info" x:Name="btnEditModInfo"
                             Click="btnEditModInfo_Click" />
-                    <Button Grid.Row="7" Height="25" Margin="3" Content="Play (Unmodded)" x:Name="btnPlayUnmodded"
+                    <Button Grid.Row="7" Margin="3" Content="Play (Unmodded)" x:Name="btnPlayUnmodded"
                             Click="btnPlayUnmodded_Click" />
-                    <Button Grid.Row="8" Height="25" Margin="3" Content="Play (Pathfinder)" x:Name="btnPlayPathfinder"
+                    <Button Grid.Row="8" Margin="3" Content="Play (Pathfinder)" x:Name="btnPlayPathfinder"
                             Click="btnPlayPathfinder_Click" />
                 </Grid>
             </Grid>

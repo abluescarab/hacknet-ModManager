@@ -9,6 +9,14 @@
         <Image x:Key="add" Source="Resources/add.png" Width="16" Height="16"/>
         <Image x:Key="delete" Source="Resources/delete.png" Width="16" Height="16"/>
         <Image x:Key="arrow_down" Source="Resources/arrow_down.png" Width="16" Height="16"/>
-        <Image x:Key="arrow_up" Source="Resources/arrow_up.png" Width="16" Height="16"/>
+        <Image x:Key="arrow_up" Source="Resources/arrow_up.png" Width="16" Height="16" />
+
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Padding" Value="3" />
+        </Style>
+
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Height" Value="25" />
+        </Style>
     </Application.Resources>
 </Application>
