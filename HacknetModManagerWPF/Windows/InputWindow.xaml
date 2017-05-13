@@ -2,8 +2,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HacknetModManager" mc:Ignorable="d" Title="" Height="125" Width="300"
-        ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner">
+        xmlns:local="clr-namespace:HacknetModManager" mc:Ignorable="d" Title="" Height="145" Width="300"
+        ShowInTaskbar="False" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" Loaded="Window_Loaded">
     <Grid Margin="3">
         <Grid.RowDefinitions>
             <RowDefinition Height="auto" />
@@ -11,7 +11,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Label Grid.Row="0" x:Name="lblPrompt" Content="Input:" />
-        <TextBox Grid.Row="1" x:Name="txtInput" Margin="3" VerticalAlignment="Top" />
+        <TextBox Grid.Row="1" x:Name="txtInput" VerticalAlignment="Top" />
         <local:PopupButtons Grid.Row="2" x:Name="popupButtons" OKClicked="popupButtons_OKClicked"
                 CancelClicked="popupButtons_CancelClicked" />
     </Grid>
