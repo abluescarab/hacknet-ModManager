@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-        <Button x:Name="OKButton" Content="OK" Width="75" Height="25" Margin="3" Click="OKButton_Click" />
-        <Button x:Name="CancelButton" Content="Cancel" Width="75" Height="25" Margin="3" Click="CancelButton_Click" />
+        <Button x:Name="OKButton" Content="OK" Width="75" Height="25" Click="OKButton_Click" />
+        <Button x:Name="CancelButton" Content="Cancel" Width="75" Height="25" Click="CancelButton_Click" />
     </StackPanel>
 </UserControl>
