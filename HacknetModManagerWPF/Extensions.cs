@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Reflection;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace HacknetModManager {
@@ -21,6 +22,11 @@ namespace HacknetModManager {
             for(int i = 0; i < array.Length; i++) {
                 array[i] = value;
             }
+        }
+
+        public static bool? ShowDialog(this Window window, Window owner) {
+            window.Owner = owner;
+            return window.ShowDialog();
         }
 
         //public static void MoveUp(this ListBox listBox) {
