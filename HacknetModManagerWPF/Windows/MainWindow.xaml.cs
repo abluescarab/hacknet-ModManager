@@ -128,7 +128,7 @@ namespace HacknetModManager {
         }
 
         private void listMods_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-
+            LoadMod(((ModListViewItem)listMods.SelectedItem).Mod);
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
@@ -144,8 +144,8 @@ namespace HacknetModManager {
         }
 
         private void UpdateStatusBar() {
-            statusRequests.Content = string.Format(statusRequests.ContentStringFormat, RateUtils.GetRateLimit(Client).Remaining);
-            statusReset.Content = string.Format(statusReset.ContentStringFormat, RateUtils.GetFormattedResetTime(Client, false));
+            statusRequests.ContentStringFormat = string.Format(statusRequests.ContentStringFormat, RateUtils.GetRateLimit(Client).Remaining);
+            statusReset.ContentStringFormat = string.Format(statusReset.ContentStringFormat, RateUtils.GetFormattedResetTime(Client, false));
         }
 
         private bool CheckForHacknet() {
