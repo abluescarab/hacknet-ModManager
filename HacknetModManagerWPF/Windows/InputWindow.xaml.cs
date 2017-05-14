@@ -34,7 +34,7 @@ namespace HacknetModManager {
             return ShowDialog();
         }
 
-        private void popupButtons_OKClicked(object sender, RoutedEventArgs e) {
+        private void popupButtons_OkayClicked(object sender, RoutedEventArgs e) {
             Answer = txtInput.Text;
             DialogResult = true;
             Close();

@@ -17,14 +17,14 @@ namespace HacknetModManager {
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            popupButtons.OKButton.IsEnabled = false;
+            popupButtons.OkayEnabled = false;
         }
 
         private void txtMod_TextChanged(object sender, TextChangedEventArgs e) {
-            popupButtons.OKButton.IsEnabled = txtMod.Text.Length > 0;
+            popupButtons.OkayEnabled = txtMod.Text.Length > 0;
         }
 
-        private void popupButtons_OKClicked(object sender, RoutedEventArgs e) {
+        private void popupButtons_OkayClicked(object sender, RoutedEventArgs e) {
             bool added = false;
             Mod = default(Mod);
 

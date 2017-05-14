@@ -59,14 +59,14 @@ namespace HacknetModManager {
                 else {
                     lbxReleases.IsEnabled = false;
                     lbxReleases.Items.Add("There are no releases.");
-                    popupButtons.OKButton.IsEnabled = false;
+                    popupButtons.OkayEnabled = false;
                 }
             }
 
             return ShowDialog();
         }
 
-        private void popupButtons_OKClicked(object sender, RoutedEventArgs e) {
+        private void popupButtons_OkayClicked(object sender, RoutedEventArgs e) {
             if(lbxReleases.SelectedItems.Count > 0) {
                 DialogResult = true;
                 Release = (Release)lbxReleases.SelectedItem;
