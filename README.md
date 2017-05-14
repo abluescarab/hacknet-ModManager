@@ -1,6 +1,9 @@
 # Mod Manager
 Mod Manager is a program for [Hacknet Pathfinder](https://github.com/Arkhist/Hacknet-Pathfinder/releases) that allows you to manage mods from GitHub and on your local computer.
 
+## Installation
+Download the latest release and unzip the file into your Hacknet installation folder (typically `C:\Program Files (x86)\Steam\steamapps\common\Hacket`).
+
 ## Planned Features
 * Dark and light theme
 * More supported mod formats
@@ -36,3 +39,7 @@ Example format:
     "Info": "This is my mod for Hacknet."
 }
 ```
+
+## Credits
+* [Zortex](https://github.com/Zortex04) for the dark theme (upcoming)
+* [oxygencraft](https://github.com/oxygencraft) for the releases window
