@@ -158,7 +158,7 @@ namespace HacknetModManager {
                     Octokit.Release release = Client.Repository.Release.GetLatest(owner, repo).Result;
 
                     UpdateWindow win = new UpdateWindow();
-                    if(win.ShowDialog(this, GetVersion(includeRevision: false), release.TagName) == true) {
+                    if(win.ShowDialog(this, release.TagName) == true) {
                         Process.Start(release.HtmlUrl);
                     }
                 }
@@ -282,21 +282,6 @@ namespace HacknetModManager {
                     item.IsChecked = false;
                 }
             }
-        }
-
-        private string GetVersion(bool includeMinor = true, bool includePatch = true, bool includeRevision = true) {
-            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            int removes = 0;
-
-            if(!includeRevision) removes++;
-            if(!includePatch) removes++;
-            if(!includeMinor) removes++;
-            
-            for(int i = removes; i > 0; i--) {
-                version = version.Remove(version.LastIndexOf("."));
-            }
-
-            return version;
         }
     }
 }

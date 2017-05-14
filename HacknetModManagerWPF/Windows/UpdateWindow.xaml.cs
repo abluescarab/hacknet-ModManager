@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -21,22 +23,27 @@ namespace HacknetModManager {
             InitializeComponent();
         }
 
-        public bool? ShowDialog(Window owner, string currentVersion, string latestVersion) {
+        public bool? ShowDialog(Window owner, string latestVersion) {
             Owner = owner;
-            lblCurrentVersion.Content = currentVersion;
+            lblCurrentVersion.Content = GetVersion();
             lblLatestVersion.Content = latestVersion;
             return ShowDialog();
         }
 
         private void popupButtons_YesClicked(object sender, RoutedEventArgs e) {
             DialogResult = true;
-            // todo: update
             Close();
         }
 
         private void popupButtons_NoClicked(object sender, RoutedEventArgs e) {
             DialogResult = false;
             Close();
+        }
+
+        private string GetVersion() {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fvi = FileVersionInfo.GetVersionInfo(assembly.Location);
+            return fvi.FileVersion;
         }
     }
 }
