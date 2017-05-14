@@ -12,7 +12,7 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
         <Menu x:Name="menu" VerticalAlignment="Top" Height="auto">
-            <MenuItem x:Name="menuOptions" Header="_Options">
+            <MenuItem x:Name="menuOptions" Header="_Options" Visibility="Collapsed">
                 <MenuItem x:Name="optionsLightTheme" Header="_Light Theme" />
                 <MenuItem x:Name="optionsDarkTheme" Header="_Dark Theme" />
             </MenuItem>
