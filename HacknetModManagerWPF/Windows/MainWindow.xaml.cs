@@ -131,7 +131,9 @@ namespace HacknetModManager {
         }
 
         private void listMods_SelectionChanged(object sender, SelectionChangedEventArgs e) {
-            LoadMod(((ModListViewItem)listMods.SelectedItem).Mod);
+            if(listMods.SelectedItem != null) {
+                LoadMod(((ModListViewItem)listMods.SelectedItem).Mod);
+            }
         }
 
         private void ListViewItem_MouseDoubleClick(object sender, MouseButtonEventArgs e) {
