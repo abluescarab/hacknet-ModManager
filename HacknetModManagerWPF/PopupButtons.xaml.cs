@@ -1,40 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace HacknetModManager {
     /// <summary>
     /// Interaction logic for PopupButtons.xaml
     /// </summary>
     public partial class PopupButtons : UserControl {
-        public event RoutedEventHandler OKClicked;
+        public event RoutedEventHandler OkayClicked;
         public event RoutedEventHandler CancelClicked;
+
+        public string OkayText {
+            get { return OkayButton.Content.ToString(); }
+            set { OkayButton.Content = value; }
+        }
+
+        public string CancelText {
+            get { return CancelButton.Content.ToString(); }
+            set { CancelButton.Content = value; }
+        }
+
+        public bool OkayEnabled {
+            get { return OkayButton.IsEnabled; }
+            set { OkayButton.IsEnabled = value; }
+        }
+
+        public bool CancelEnabled {
+            get { return CancelButton.IsEnabled; }
+            set { CancelButton.IsEnabled = value; }
+        }
 
         public PopupButtons() {
             InitializeComponent();
         }
 
-        private void OKButton_Click(object sender, RoutedEventArgs e) {
-            OnOKClicked(e);
+        private void OkayButton_Clicked(object sender, RoutedEventArgs e) {
+            OnOkayClicked(e);
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e) {
+        private void ButtonCancel_Click(object sender, RoutedEventArgs e) {
             OnCancelClicked(e);
         }
 
-        protected void OnOKClicked(RoutedEventArgs e) {
-            OKClicked?.Invoke(this, e);
+        protected void OnOkayClicked(RoutedEventArgs e) {
+            OkayClicked?.Invoke(this, e);
         }
 
         protected void OnCancelClicked(RoutedEventArgs e) {

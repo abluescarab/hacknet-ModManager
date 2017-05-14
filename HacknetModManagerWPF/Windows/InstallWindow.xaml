@@ -19,7 +19,7 @@
             <TextBox Grid.Column="0" x:Name="txtMod" VerticalAlignment="Top" TextChanged="txtMod_TextChanged" />
             <Button Grid.Column="1" Content="Browse..." x:Name="btnBrowse" Width="75" Click="btnBrowse_Click" />
         </Grid>
-        <local:PopupButtons Grid.Row="2" x:Name="popupButtons" OKClicked="popupButtons_OKClicked"
+        <local:PopupButtons Grid.Row="2" x:Name="popupButtons" OkayClicked="popupButtons_OkayClicked"
                 CancelClicked="popupButtons_CancelClicked" />
     </Grid>
 </Window>

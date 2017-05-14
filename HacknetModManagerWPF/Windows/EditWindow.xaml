@@ -56,7 +56,7 @@
                     HorizontalScrollBarVisibility="Disabled" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"
                     TextWrapping="Wrap" />
         </Grid>
-        <local:PopupButtons Grid.Row="1" x:Name="popupButtons" OKClicked="popupButtons_OKClicked"
+        <local:PopupButtons Grid.Row="1" x:Name="popupButtons" OkayClicked="popupButtons_OkayClicked"
                 CancelClicked="popupButtons_CancelClicked" />
     </Grid>
 </Window>

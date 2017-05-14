@@ -12,7 +12,7 @@
         </Grid.RowDefinitions>
         <Label Grid.Row="0" Content="Choose which release to download:" />
         <ListBox Grid.Row="1" x:Name="lbxReleases" />
-        <local:PopupButtons Grid.Row="2" x:Name="popupButtons" OKClicked="popupButtons_OKClicked"
+        <local:PopupButtons Grid.Row="2" x:Name="popupButtons" OkayClicked="popupButtons_OkayClicked"
                 CancelClicked="popupButtons_CancelClicked" />
     </Grid>
 </Window>
