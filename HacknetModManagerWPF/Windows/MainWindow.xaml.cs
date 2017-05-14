@@ -58,7 +58,7 @@ namespace HacknetModManager {
 
         private void btnInstall_Click(object sender, RoutedEventArgs e) {
             InstallWindow win = new InstallWindow();
-            win.ShowDialog();
+            win.ShowDialog(this);
             LoadMods();
             UpdateStatusBar();
         }
@@ -116,7 +116,10 @@ namespace HacknetModManager {
             EditWindow win = new EditWindow();
             Mod mod = ((ModListViewItem)listMods.SelectedItems[0]).Mod;
 
-            // todo: show edit mod info window
+            if(win.ShowDialog(this, mod) == true) {
+                mod.WriteInfo(Path.Combine(ModsFolder, mod.Name + Mod.INFO_EXT));
+                LoadMod(mod);
+            }
         }
 
         private void btnPlayUnmodded_Click(object sender, RoutedEventArgs e) {
