@@ -17,8 +17,33 @@ namespace HacknetModManager {
     /// Interaction logic for InputWindow.xaml
     /// </summary>
     public partial class InputWindow : Window {
+        public string Answer { get; private set; }
+
         public InputWindow() {
             InitializeComponent();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
+            txtInput.Focus();
+        }
+
+        public bool? ShowDialog(Window owner, string title, string prompt) {
+            Owner = owner;
+            Title = title;
+            lblPrompt.Content = prompt;
+            return ShowDialog();
+        }
+
+        private void popupButtons_OKClicked(object sender, RoutedEventArgs e) {
+            Answer = txtInput.Text;
+            DialogResult = true;
+            Close();
+        }
+
+        private void popupButtons_CancelClicked(object sender, RoutedEventArgs e) {
+            Answer = "";
+            DialogResult = false;
+            Close();
         }
     }
 }
