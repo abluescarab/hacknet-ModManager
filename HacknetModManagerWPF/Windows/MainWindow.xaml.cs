@@ -8,7 +8,6 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using Octokit;
 
 namespace HacknetModManager {
     /// <summary>
@@ -19,8 +18,8 @@ namespace HacknetModManager {
         public static string ManagerFolder { get; private set; }
         public static string ExtractFolder { get; private set; }
         public static Dictionary<string, Mod> Mods { get; private set; }
-        public static GitHubClient Client { get; private set; }
-        
+        public static Octokit.GitHubClient Client { get; private set; }
+
         public MainWindow() {
             InitializeComponent();
         }
@@ -28,11 +27,11 @@ namespace HacknetModManager {
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             if(!CheckForHacknet() && !CheckForPathfinder()) {
                 MessageBox.Show("Could not find Hacknet or Pathfinder installation. Please place Mod Manager in the same folder as Hacknet.", "Hacknet Missing");
-                System.Windows.Application.Current.Shutdown();
+                Application.Current.Shutdown();
             }
 
             Mods = new Dictionary<string, Mod>();
-            Client = new GitHubClient(new ProductHeaderValue(Assembly.GetExecutingAssembly().GetName().Name));
+            Client = new Octokit.GitHubClient(new Octokit.ProductHeaderValue(Assembly.GetExecutingAssembly().GetName().Name));
 
             InitializeFolders();
             LoadMods();
@@ -148,9 +147,37 @@ namespace HacknetModManager {
             }
         }
 
+        private void helpCheckForUpdates_Click(object sender, RoutedEventArgs e) {
+            Cursor = Cursors.Wait;
+
+            string owner = Application.Current.TryFindResource("UpdateRepoOwner").ToString();
+            string repo = Application.Current.TryFindResource("UpdateRepoName").ToString();
+
+            if(!string.IsNullOrWhiteSpace(owner) && !string.IsNullOrWhiteSpace(repo)) {
+                try {
+                    Octokit.Release release = Client.Repository.Release.GetLatest(owner, repo).Result;
+
+                    UpdateWindow win = new UpdateWindow();
+                    if(win.ShowDialog(this, GetVersion(includeRevision: false), release.TagName) == true) {
+                        Process.Start(release.HtmlUrl);
+                    }
+                }
+                catch(Exception ex) {
+                    if(ex is AggregateException) {
+                        MessageBox.Show("There are no available releases.", "Update Error");
+                    }
+                    else if(ex is Octokit.RateLimitExceededException) {
+                        RateUtils.ShowRateErrorMessage(Client, false);
+                    }
+                }
+            }
+
+            Cursor = Cursors.Arrow;
+        }
+
         private void UpdateStatusBar() {
-            statusRequests.ContentStringFormat = string.Format(statusRequests.ContentStringFormat, RateUtils.GetRateLimit(Client).Remaining);
-            statusReset.ContentStringFormat = string.Format(statusReset.ContentStringFormat, RateUtils.GetFormattedResetTime(Client, false));
+            statusRequests.Content = RateUtils.GetRateLimit(Client).Remaining;
+            statusReset.Content = RateUtils.GetFormattedResetTime(Client, false);
         }
 
         private bool CheckForHacknet() {
@@ -223,7 +250,7 @@ namespace HacknetModManager {
             if(listMods.Items.Count > 0) {
                 listMods.SelectedItem = listMods.Items[0];
             }
-            
+
             Cursor = Cursors.Arrow;
         }
 
@@ -255,6 +282,21 @@ namespace HacknetModManager {
                     item.IsChecked = false;
                 }
             }
+        }
+
+        private string GetVersion(bool includeMinor = true, bool includePatch = true, bool includeRevision = true) {
+            string version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            int removes = 0;
+
+            if(!includeRevision) removes++;
+            if(!includePatch) removes++;
+            if(!includeMinor) removes++;
+            
+            for(int i = removes; i > 0; i--) {
+                version = version.Remove(version.LastIndexOf("."));
+            }
+
+            return version;
         }
     }
 }

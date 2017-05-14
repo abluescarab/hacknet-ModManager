@@ -16,6 +16,9 @@
                 <MenuItem x:Name="optionsLightTheme" Header="_Light Theme" />
                 <MenuItem x:Name="optionsDarkTheme" Header="_Dark Theme" />
             </MenuItem>
+            <MenuItem x:Name="menuHelp" Header="_Help">
+                <MenuItem x:Name="helpCheckForUpdates" Header="_Check for Updates..." Click="helpCheckForUpdates_Click" />
+            </MenuItem>
         </Menu>
         <Grid Grid.Row="1" Grid.Column="0" Margin="3">
             <Grid.ColumnDefinitions>
