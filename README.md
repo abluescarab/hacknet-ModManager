@@ -17,7 +17,7 @@ Mod Manager has some requirements for reading and storing information about your
 * Mod information is read from a file with the name <modname>.hackmod in JSON format.
 
 ### Mod Info JSON
-Your mod's .dll file and .json file should have the same name. The JSON file should include these attributes (*attributes are case-sensitive*):
+Your mod's .dll file and .hackmod file should have the same name. The .hackmod file should follow a JSON format and should include these attributes (*attributes are case-sensitive*):
 
 * **Title**: Title (does not have to match .dll file)
 * **Description**: Description
